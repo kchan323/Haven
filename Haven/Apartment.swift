@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Song {
+class Apartment {
     var image: String
     var title: String
     var description: String
