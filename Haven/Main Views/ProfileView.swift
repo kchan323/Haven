@@ -25,8 +25,8 @@ class ProfileView: UIViewController {
     let reuseIdentifier2 = "ListingCellReuse"
     var Listings: [Apartment]!
     
-    var addLabel: UILabel!
-    var addImageView: UIImageView!
+    var addButton: UIButton!
+    var lineView3: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,17 +105,19 @@ class ProfileView: UIViewController {
         tableView2.register(ListingTableViewCell.self, forCellReuseIdentifier: reuseIdentifier2)
         view.addSubview(tableView2)
         
-        addLabel = UILabel()
-        addLabel.text = "ADD SUBLET"
-        addLabel.textColor = UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
-        addLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        addLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addLabel)
+        addButton = UIButton(frame: CGRect(x: view.frame.width - 150, y: view.frame.height - 150, width: 120, height: 20))
+        addButton.setTitle("ADD SUBLET  ", for: .normal)
+        addButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        addButton.setTitleColor(UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0), for: .normal)
+        addButton.setImage(UIImage(named: "caret_green"), for: .normal)
+        addButton.semanticContentAttribute = .forceRightToLeft
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        view.addSubview(addButton)
         
-        addImageView = UIImageView(image: UIImage(named: "caret_green"))
-        addImageView.contentMode = .scaleAspectFit
-        addImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addImageView)
+        lineView3 = UIView()
+        lineView3.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
+        lineView3.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(lineView3)
         
         setupConstraints()
     }
@@ -171,70 +173,67 @@ class ProfileView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            addLabel.topAnchor.constraint(equalTo: tableView2.bottomAnchor, constant: 24),
-            addLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -43),
-            addLabel.widthAnchor.constraint(equalToConstant: 95),
-            addLabel.heightAnchor.constraint(equalToConstant: 20)
+            lineView3.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 24),
+            lineView3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            lineView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            lineView3.heightAnchor.constraint(equalToConstant: 2)
         ])
-        
-        NSLayoutConstraint.activate([
-            addImageView.widthAnchor.constraint(equalToConstant: 12),
-            addImageView.heightAnchor.constraint(equalToConstant: 24),
-            addImageView.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 0),
-            addImageView.centerYAnchor.constraint(equalTo: addLabel.centerYAnchor)
-        ])
+    }
+    
+    @objc func addButtonPressed(sender: UIButton!) {
+        print("pressed add sublet button")
     }
 }
 
-    extension ProfileView: UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if(tableView == self.tableView1) {
-                return Drafts.count
-            }
-            else {
-                return Listings.count
-            }
+extension ProfileView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == self.tableView1) {
+            return Drafts.count
         }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if(tableView == self.tableView1) {
-                let draft_cell = tableView1.dequeueReusableCell(withIdentifier: reuseIdentifier1, for: indexPath) as! DraftTableViewCell
-                let Draft = Drafts[indexPath.row]
-                draft_cell.configure(for: Draft)
-                draft_cell.selectionStyle = .none
-                return draft_cell
-            }
-            else {
-                let listing_cell = tableView2.dequeueReusableCell(withIdentifier: reuseIdentifier2, for: indexPath) as! ListingTableViewCell
-                let Listing = Listings[indexPath.row]
-                listing_cell.configure(for: Listing)
-                listing_cell.selectionStyle = .none
-                return listing_cell
-            }
+        else {
+            return Listings.count
         }
     }
 
-    extension ProfileView: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return cellHeight
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if(tableView == self.tableView1) {
+            let draft_cell = tableView1.dequeueReusableCell(withIdentifier: reuseIdentifier1, for: indexPath) as! DraftTableViewCell
+            let Draft = Drafts[indexPath.row]
+            draft_cell.configure(for: Draft)
+            draft_cell.selectionStyle = .none
+            return draft_cell
         }
+        else {
+            let listing_cell = tableView2.dequeueReusableCell(withIdentifier: reuseIdentifier2, for: indexPath) as! ListingTableViewCell
+            let Listing = Listings[indexPath.row]
+            listing_cell.configure(for: Listing)
+            listing_cell.selectionStyle = .none
+            return listing_cell
+        }
+    }
+}
 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if(tableView == self.tableView1) {
-                let Apartment = Drafts[indexPath.row]
-                let viewController = DetailViewController(apartment: Apartment)
-//                viewController.delegate = self
-                navigationController!.pushViewController(viewController, animated: true)
-            }
-            else {
-                let Apartment = Listings[indexPath.row]
-                let viewController = DetailViewController(apartment: Apartment)
-//                viewController.delegate = self
-                navigationController?.pushViewController(viewController, animated: true)
-            }
+extension ProfileView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == self.tableView1) {
+            let Apartment = Drafts[indexPath.row]
+            let viewController = DetailViewController(apartment: Apartment)
+//            viewController.delegate = self
+            navigationController!.pushViewController(viewController, animated: true)
+        }
+        else {
+            let Apartment = Listings[indexPath.row]
+            let viewController = DetailViewController(apartment: Apartment)
+//            viewController.delegate = self
+            navigationController?.pushViewController(viewController, animated: true)
+        }
             
-        }
     }
+}
 
     /*
     // MARK: - Navigation
