@@ -5,14 +5,13 @@
 //  Created by Katelin Chan on 11/19/19.
 //  Copyright © 2019 Katelin Chan. All rights reserved.
 //
-
 import UIKit
 
 class ProfileView: UIViewController {
     
     var titleLabel: UILabel!
     var headerLabel1: UILabel!
-//    var rectangle: CGRect!
+    var lineView1: UIView!
     
     var tableView1: UITableView!
     let reuseIdentifier1 = "DraftCellReuse"
@@ -20,6 +19,7 @@ class ProfileView: UIViewController {
     var Drafts: [Apartment]!
     
     var headerLabel2: UILabel!
+    var lineView2: UIView!
     
     var tableView2: UITableView!
     let reuseIdentifier2 = "ListingCellReuse"
@@ -47,9 +47,14 @@ class ProfileView: UIViewController {
         headerLabel1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerLabel1)
         
-        let draft1 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft2 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft3 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        lineView1 = UIView()
+        lineView1.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 211.0 / 255.0, alpha: 1.0)
+        lineView1.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(lineView1)
+        
+        let draft1 = Apartment(image: "apartment", title: "2-Bedroom (Spring 2020)", description: "All new, fully furnished apartment. 5 min walk to the engineering quad.", price: 1085, address: "3002 College Ave", type: "Apartment", electricity: true, wifi: false, water: true, trash: false, heat: true)
+        let draft2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let draft3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         Drafts = [draft1, draft2, draft3]
         
         tableView1 = UITableView()
@@ -66,11 +71,6 @@ class ProfileView: UIViewController {
         tableView1.translatesAutoresizingMaskIntoConstraints = false
         tableView1.register(DraftTableViewCell.self, forCellReuseIdentifier: reuseIdentifier1)
         view.addSubview(tableView1)
-        
-//        rectangle = CGRect(x: 0, y: 0, width: 72, height: 6)
-//        let color = UIColor(red: 0.0, green: 1.0, blue: 211.0 / 255.0, alpha: 1.0)
-//        color.setFill()
-//        UIRectFill(rectangle)
             
         headerLabel2 = UILabel()
         headerLabel2.text = "My listings."
@@ -79,9 +79,14 @@ class ProfileView: UIViewController {
         headerLabel2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerLabel2)
         
-        let listing1 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing2 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing3 = Apartment(image: "", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        lineView2 = UIView()
+        lineView2.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 211.0 / 255.0, alpha: 1.0)
+        lineView2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(lineView2)
+        
+        let listing1 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let listing2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let listing3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         Listings = [listing1, listing2, listing3]
         
         tableView2 = UITableView()
@@ -107,7 +112,7 @@ class ProfileView: UIViewController {
         addLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addLabel)
         
-        addImageView = UIImageView(image: UIImage(named: "caret"))
+        addImageView = UIImageView(image: UIImage(named: "caret_green"))
         addImageView.contentMode = .scaleAspectFit
         addImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addImageView)
@@ -131,7 +136,14 @@ class ProfileView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            tableView1.topAnchor.constraint(equalTo: headerLabel1.bottomAnchor, constant: 30),
+            lineView1.topAnchor.constraint(equalTo: headerLabel1.bottomAnchor),
+            lineView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
+            lineView1.widthAnchor.constraint(equalToConstant: 72),
+            lineView1.heightAnchor.constraint(equalToConstant: 6)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView1.topAnchor.constraint(equalTo: lineView1.bottomAnchor, constant: 24),
             tableView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             tableView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
             tableView1.heightAnchor.constraint(equalToConstant: 210)
@@ -145,7 +157,14 @@ class ProfileView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            tableView2.topAnchor.constraint(equalTo: headerLabel2.bottomAnchor, constant: 30),
+            lineView2.topAnchor.constraint(equalTo: headerLabel2.bottomAnchor),
+            lineView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
+            lineView2.widthAnchor.constraint(equalToConstant: 72),
+            lineView2.heightAnchor.constraint(equalToConstant: 6)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView2.topAnchor.constraint(equalTo: lineView2.bottomAnchor, constant: 24),
             tableView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             tableView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
             tableView2.heightAnchor.constraint(equalToConstant: 210)
@@ -159,8 +178,8 @@ class ProfileView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            addImageView.widthAnchor.constraint(equalToConstant: 6),
-            addImageView.heightAnchor.constraint(equalToConstant: 12),
+            addImageView.widthAnchor.constraint(equalToConstant: 12),
+            addImageView.heightAnchor.constraint(equalToConstant: 24),
             addImageView.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 0),
             addImageView.centerYAnchor.constraint(equalTo: addLabel.centerYAnchor)
         ])
@@ -200,17 +219,25 @@ class ProfileView: UIViewController {
             return cellHeight
         }
 
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            let Song = Songs[indexPath.row]
-//            let viewController = DetailViewController(song: Song)
-//            viewController.delegate = self
-//            navigationController?.pushViewController(viewController, animated: true)
-//        }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            if(tableView == self.tableView1) {
+                let Apartment = Drafts[indexPath.row]
+                let viewController = DetailViewController(apartment: Apartment)
+//                viewController.delegate = self
+                navigationController!.pushViewController(viewController, animated: true)
+            }
+            else {
+                let Apartment = Listings[indexPath.row]
+                let viewController = DetailViewController(apartment: Apartment)
+//                viewController.delegate = self
+                navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
     }
 
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

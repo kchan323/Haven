@@ -33,7 +33,7 @@ class ListingTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
         
-        caretImageView = UIImageView(image: UIImage(named: "caret"))
+        caretImageView = UIImageView(image: UIImage(named: "caret_green"))
         caretImageView.contentMode = .scaleAspectFit
         caretImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(caretImageView)
@@ -55,8 +55,8 @@ class ListingTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            caretImageView.widthAnchor.constraint(equalToConstant: 6),
-            caretImageView.heightAnchor.constraint(equalToConstant: 12),
+            caretImageView.widthAnchor.constraint(equalToConstant: 12),
+            caretImageView.heightAnchor.constraint(equalToConstant: 24),
             caretImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             caretImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])

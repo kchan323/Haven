@@ -14,7 +14,7 @@ class Apartment {
     var description: String
     var price: Int
     var address: String
-    var type: String //apartment or house
+//    var type: String //apartment or house
 
     var electricity: Bool
     var wifi: Bool
@@ -28,7 +28,7 @@ class Apartment {
         self.description = description
         self.price = price
         self.address = address
-        self.type = type //apartment or house
+//        self.type = type //apartment or house
 
         self.electricity = electricity
         self.wifi = wifi

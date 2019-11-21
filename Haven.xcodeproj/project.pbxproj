@@ -17,6 +17,7 @@
 		84CEB57E2384D2540008C469 /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB57D2384D2540008C469 /* Apartment.swift */; };
 		84CEB5802384DB960008C469 /* DraftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB57F2384DB960008C469 /* DraftTableViewCell.swift */; };
 		84CEB5862384E9CB0008C469 /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */; };
+		84CEB58B2384FAB90008C469 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB58A2384FAB90008C469 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		84CEB57D2384D2540008C469 /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		84CEB57F2384DB960008C469 /* DraftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftTableViewCell.swift; sourceTree = "<group>"; };
 		84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
+		84CEB58A2384FAB90008C469 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +69,9 @@
 				84B7FE882381FA3B000E95C3 /* AppDelegate.swift */,
 				84CC2A962383B278003D4DBE /* CustomTabBarController.swift */,
 				84CC2A9F2383B631003D4DBE /* Main Views */,
+				84CEB5892384F7C20008C469 /* Cells */,
 				84CEB57D2384D2540008C469 /* Apartment.swift */,
-				84CEB57F2384DB960008C469 /* DraftTableViewCell.swift */,
-				84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */,
+				84CEB58A2384FAB90008C469 /* DetailViewController.swift */,
 				84B7FE8E2381FA3E000E95C3 /* Assets.xcassets */,
 				84B7FE932381FA3E000E95C3 /* LaunchScreen.storyboard */,
 				84B7FE962381FA3E000E95C3 /* Info.plist */,
@@ -85,6 +87,15 @@
 				84CC2A9C2383B60B003D4DBE /* ProfileView.swift */,
 			);
 			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		84CEB5892384F7C20008C469 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84CEB57F2384DB960008C469 /* DraftTableViewCell.swift */,
+				84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CEB58B2384FAB90008C469 /* DetailViewController.swift in Sources */,
 				84CC2A992383B5F5003D4DBE /* SearchView.swift in Sources */,
 				84CC2A9B2383B5FF003D4DBE /* SaveView.swift in Sources */,
 				84CEB5862384E9CB0008C469 /* ListingTableViewCell.swift in Sources */,
