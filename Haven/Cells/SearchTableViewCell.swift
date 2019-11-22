@@ -10,82 +10,106 @@ import UIKit
 class SearchTableViewCell: UITableViewCell {
     
     var aptImageView: UIImageView!
+    var addressLabel: UILabel!
     var titleLabel: UILabel!
     var priceLabel: UILabel!
-    var addressLabel: UILabel!
-
     
-//    let padding: CGFloat = 16
+    let padding: CGFloat = 16
 //    let labelHeight: CGFloat = 16
-//    let caretImageLength: CGFloat = 30
+    let imageLength: CGFloat = 160
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        contentView.backgroundColor = .white
         
-        aptImageView = UIImageView(frame: CGRect(x: 0,y: 0,width: 10, height: 10))
-        //var aptImage = UIImage(named: "large single")
-        //aptImageView.image = aptImage
-        aptImageView.contentMode = .scaleAspectFill
+        backgroundColor = .clear
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.23
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowColor = UIColor.black.cgColor
+
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 8
+        
+//        contentView.layer.cornerRadius = 10
+//        contentView.layer.borderWidth = 1.0
+//        contentView.layer.borderColor = UIColor.clear.cgColor
+//        contentView.layer.masksToBounds = true
+//
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        layer.shadowRadius = 2.0
+//        layer.shadowOpacity = 0.5
+//        layer.masksToBounds = false
+//        layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+        
+        aptImageView = UIImageView()
         aptImageView.translatesAutoresizingMaskIntoConstraints = false
-        //aptImageView.layer.masksToBounds = true
+        aptImageView.contentMode = .scaleAspectFill
+        aptImageView.layer.masksToBounds = true
         contentView.addSubview(aptImageView)
+        
+        addressLabel = UILabel()
+        addressLabel.textColor = UIColor(white: 151.0 / 255.0, alpha: 1.0)
+        addressLabel.font = UIFont.systemFont(ofSize: 14)
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(addressLabel)
         
         titleLabel = UILabel()
         titleLabel.textColor = .black
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
         
         priceLabel = UILabel()
-        priceLabel.textColor = .black
-        priceLabel.font = UIFont.systemFont(ofSize: 14)
+        priceLabel.backgroundColor = UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+        priceLabel.layer.cornerRadius = 10
+        priceLabel.layer.masksToBounds = true
+        priceLabel.textColor = .white
+        priceLabel.textAlignment = .center;
+        priceLabel.font = UIFont.systemFont(ofSize: 18)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(priceLabel)
-        
-        addressLabel = UILabel()
-        addressLabel.textColor = UIColor.lightGray
-        addressLabel.font = UIFont.systemFont(ofSize: 12)
-        addressLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(addressLabel)
         
         setupConstraints()
     }
     
     func setupConstraints() {
-        
         NSLayoutConstraint.activate([
-            //aptImageView.widthAnchor.constraint(equalToConstant: 16),
-            //aptImageView.heightAnchor.constraint(equalToConstant: 100),
             aptImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             aptImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             aptImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            aptImageView.heightAnchor.constraint(equalToConstant: imageLength)
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: addressLabel.leadingAnchor),
-            //titleLabel.heightAnchor.constraint(equalToConstant: 24),
-            titleLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 6)
+            addressLabel.topAnchor.constraint(equalTo: aptImageView.bottomAnchor, constant: padding),
+            addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            addressLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         NSLayoutConstraint.activate([
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,  constant: 0),
-            priceLabel.heightAnchor.constraint(equalToConstant: 18),
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+            titleLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            titleLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
         
         NSLayoutConstraint.activate([
-            addressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            addressLabel.heightAnchor.constraint(equalToConstant: 18),
-            addressLabel.topAnchor.constraint(equalTo: aptImageView.bottomAnchor, constant: 6)
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            priceLabel.widthAnchor.constraint(equalToConstant: 75),
+            priceLabel.heightAnchor.constraint(equalToConstant: 28)
         ])
-       
     }
     
     func configure(for search: Apartment) {
         aptImageView.image = UIImage(named: search.image)
-        titleLabel.text = search.title
-        priceLabel.text = String(search.price)
         addressLabel.text = search.address
+        titleLabel.text = search.title
+        priceLabel.text = "$" + String(search.price)
     }
     
     required init?(coder: NSCoder) {
@@ -93,4 +117,3 @@ class SearchTableViewCell: UITableViewCell {
     }
 
 }
-
