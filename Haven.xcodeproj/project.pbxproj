@@ -19,6 +19,7 @@
 		84CEB5862384E9CB0008C469 /* ListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */; };
 		84CEB58B2384FAB90008C469 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEB58A2384FAB90008C469 /* DetailViewController.swift */; };
 		84F0731E23873A1400B5529B /* ApartmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0731D23873A1400B5529B /* ApartmentCollectionViewCell.swift */; };
+		C2306FF4238774FE0094C696 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2306FF3238774FE0094C696 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingTableViewCell.swift; sourceTree = "<group>"; };
 		84CEB58A2384FAB90008C469 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		84F0731D23873A1400B5529B /* ApartmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2306FF3238774FE0094C696 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				84CEB57F2384DB960008C469 /* DraftTableViewCell.swift */,
 				84CEB5852384E9CB0008C469 /* ListingTableViewCell.swift */,
 				84F0731D23873A1400B5529B /* ApartmentCollectionViewCell.swift */,
+				C2306FF3238774FE0094C696 /* SearchTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				84F0731E23873A1400B5529B /* ApartmentCollectionViewCell.swift in Sources */,
 				84CC2A992383B5F5003D4DBE /* SearchView.swift in Sources */,
 				84CC2A9B2383B5FF003D4DBE /* SaveView.swift in Sources */,
+				C2306FF4238774FE0094C696 /* SearchTableViewCell.swift in Sources */,
 				84CEB5862384E9CB0008C469 /* ListingTableViewCell.swift in Sources */,
 				84CEB57E2384D2540008C469 /* Apartment.swift in Sources */,
 				84B7FE892381FA3B000E95C3 /* AppDelegate.swift in Sources */,
