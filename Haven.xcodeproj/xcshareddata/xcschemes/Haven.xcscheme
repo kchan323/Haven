@@ -42,11 +42,6 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "1"
-         BundleIdentifier = "katelin.chan.Haven"
-         RemotePath = "/Users/katelinchan/Library/Developer/CoreSimulator/Devices/7747EEA2-E75F-4A2C-8B67-56A5C76634DC/data/Containers/Bundle/Application/2ADE3A23-E326-4270-A307-A3596113BBA5/Haven.app">
-      </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"

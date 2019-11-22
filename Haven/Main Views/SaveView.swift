@@ -281,32 +281,8 @@ extension SaveView: UICollectionViewDelegateFlowLayout {
 extension SaveView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if (collectionView == collectionView1) {
-//            let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
-//            cell.changeColor()
-//            if(cell.backgroundColor == .lightGray) {
-//                self.filteredCategories.removeAll(where: { $0 == categories[indexPath.row]})
-//            }
-//            else {
-//                self.filteredCategories.append(categories[indexPath.row])
-//            }
-//
-//            if (filteredCategories == []) {
-//                filteredRestaurants = restaurants
-//            }
-//            else {
-//                filteredRestaurants = []
-//                for restaurant in restaurants {
-//                    for filter in filteredCategories {
-//                        if (restaurant.category == filter) {
-//                            filteredRestaurants.append(restaurant)
-//                        }
-//                    }
-//                }
-//            }
+//        if (collectionView == collectionView1) {
 //        }
-//        self.collectionView2.reloadData()
-        }
     }
 }
     
