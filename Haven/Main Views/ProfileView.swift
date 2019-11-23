@@ -55,19 +55,18 @@ class ProfileView: UIViewController {
         let draft1 = Apartment(image: "apartment", title: "2-Bedroom (Spring 2020)", description: "All new, fully furnished apartment. 5 min walk to the engineering quad.", price: 1085, address: "3002 College Ave", type: "Apartment", electricity: true, wifi: false, water: true, trash: false, heat: true)
         let draft2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         let draft3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        Drafts = [draft1, draft2, draft3]
+        let draft4 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        Drafts = [draft1, draft2, draft3, draft4]
         
         tableView1 = UITableView()
         tableView1.dataSource = self
         tableView1.delegate = self
         tableView1.layer.cornerRadius = 10;
-        tableView1.clipsToBounds = false;
-        tableView1.layer.masksToBounds = false;
-        tableView1.layer.shadowColor = UIColor.black.cgColor
-        tableView1.layer.shadowOffset = CGSize(width: 0.0, height: 0.5);
-        tableView1.layer.shadowOpacity = 0.5
-        tableView1.layer.shadowRadius = 2.0
-        tableView1.isScrollEnabled = false;
+        tableView1.clipsToBounds = true;
+        tableView1.layer.masksToBounds = true;
+        tableView1.layer.borderWidth = 1
+        tableView1.layer.borderColor = UIColor.gray.cgColor
+        tableView1.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
         tableView1.translatesAutoresizingMaskIntoConstraints = false
         tableView1.register(DraftTableViewCell.self, forCellReuseIdentifier: reuseIdentifier1)
         view.addSubview(tableView1)
@@ -93,14 +92,11 @@ class ProfileView: UIViewController {
         tableView2.dataSource = self
         tableView2.delegate = self
         tableView2.layer.cornerRadius = 10;
-        tableView2.clipsToBounds = false;
-        tableView2.layer.masksToBounds = false;
-        tableView2.layer.shadowColor = UIColor.black.cgColor
-        tableView2.layer.shadowOffset = CGSize(width: 0.0, height: 0.5);
-        tableView2.layer.shadowOpacity = 0.5
-        tableView2.layer.shadowRadius = 2.0
-        tableView2.layer.cornerRadius = 10
-        tableView2.isScrollEnabled = false;
+        tableView2.clipsToBounds = true;
+        tableView2.layer.masksToBounds = true;
+        tableView2.layer.borderWidth = 1
+        tableView2.layer.borderColor = UIColor.gray.cgColor
+        tableView2.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
         tableView2.translatesAutoresizingMaskIntoConstraints = false
         tableView2.register(ListingTableViewCell.self, forCellReuseIdentifier: reuseIdentifier2)
         view.addSubview(tableView2)

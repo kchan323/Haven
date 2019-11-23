@@ -20,7 +20,6 @@ class SearchTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        contentView.backgroundColor = .white
         
         backgroundColor = .clear
         layer.masksToBounds = false
@@ -31,18 +30,6 @@ class SearchTableViewCell: UITableViewCell {
 
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 8
-        
-//        contentView.layer.cornerRadius = 10
-//        contentView.layer.borderWidth = 1.0
-//        contentView.layer.borderColor = UIColor.clear.cgColor
-//        contentView.layer.masksToBounds = true
-//
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        layer.shadowRadius = 2.0
-//        layer.shadowOpacity = 0.5
-//        layer.masksToBounds = false
-//        layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         
         aptImageView = UIImageView()
         aptImageView.translatesAutoresizingMaskIntoConstraints = false

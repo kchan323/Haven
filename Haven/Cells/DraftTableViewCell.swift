@@ -20,7 +20,8 @@ class DraftTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = .white
+
         addressLabel = UILabel()
         addressLabel.textColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
         addressLabel.font = UIFont.systemFont(ofSize: 12)

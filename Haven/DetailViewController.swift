@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     var descriptionLabel: UILabel!
     var rentLabel: UILabel!
     var lineView: UIView!
+    var priceView: UIView!
     var priceLabel: UILabel!
     var monthLabel: UILabel!
     
@@ -98,16 +99,21 @@ class DetailViewController: UIViewController {
         lineView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView)
         
+        priceView = UIView()
+        priceView.backgroundColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
+        priceView.layer.cornerRadius = 10
+        priceView.layer.masksToBounds = true
+        priceView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(priceView)
+        
         priceLabel = UILabel()
-        priceLabel.backgroundColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
-        priceLabel.layer.cornerRadius = 10
-        priceLabel.layer.masksToBounds = true
-        priceLabel.text = "$\(String(apartment.price))\u{00a0}."
+        priceLabel.text = "$" + String(apartment.price)
         priceLabel.textColor = .white
-        priceLabel.textAlignment = .right;
+        priceLabel.textAlignment = .right
         priceLabel.font = UIFont.systemFont(ofSize: 24)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(priceLabel)
+        view.bringSubviewToFront(priceLabel)
         
         monthLabel = UILabel()
         monthLabel.text = "PER MONTH"
@@ -177,14 +183,21 @@ class DetailViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            priceLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 14),
-            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -38),
-            priceLabel.widthAnchor.constraint(equalToConstant: 168),
-            priceLabel.heightAnchor.constraint(equalToConstant: 48)
+            priceView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 14),
+            priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -38),
+            priceView.widthAnchor.constraint(equalToConstant: 168),
+            priceView.heightAnchor.constraint(equalToConstant: 48)
+        ])
+               
+        NSLayoutConstraint.activate([
+            priceLabel.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 8),
+            priceLabel.bottomAnchor.constraint(equalTo: priceView.bottomAnchor, constant: -8),
+            priceLabel.trailingAnchor.constraint(equalTo: priceView.trailingAnchor, constant: -16),
+            priceLabel.widthAnchor.constraint(equalToConstant: 80),
         ])
         
         NSLayoutConstraint.activate([
-            monthLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
+            monthLabel.topAnchor.constraint(equalTo: priceView.bottomAnchor),
             monthLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -38),
             monthLabel.widthAnchor.constraint(equalToConstant: 132),
             monthLabel.heightAnchor.constraint(equalToConstant: 32)
