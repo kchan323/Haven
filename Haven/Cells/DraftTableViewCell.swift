@@ -34,7 +34,7 @@ class DraftTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)
         
-        caretImageView = UIImageView(image: UIImage(named: "caret_green"))
+        caretImageView = UIImageView(image: UIImage(named: "caret_teal"))
         caretImageView.contentMode = .scaleAspectFit
         caretImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(caretImageView)

@@ -67,6 +67,7 @@ class ProfileView: UIViewController {
         tableView1.layer.borderWidth = 1
         tableView1.layer.borderColor = UIColor.gray.cgColor
         tableView1.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
+        tableView1.showsVerticalScrollIndicator = false
         tableView1.translatesAutoresizingMaskIntoConstraints = false
         tableView1.register(DraftTableViewCell.self, forCellReuseIdentifier: reuseIdentifier1)
         view.addSubview(tableView1)
@@ -97,17 +98,19 @@ class ProfileView: UIViewController {
         tableView2.layer.borderWidth = 1
         tableView2.layer.borderColor = UIColor.gray.cgColor
         tableView2.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
+        tableView2.showsVerticalScrollIndicator = false
         tableView2.translatesAutoresizingMaskIntoConstraints = false
         tableView2.register(ListingTableViewCell.self, forCellReuseIdentifier: reuseIdentifier2)
         view.addSubview(tableView2)
         
-        addButton = UIButton(frame: CGRect(x: view.frame.width - 150, y: view.frame.height - 150, width: 120, height: 20))
+        addButton = UIButton()
         addButton.setTitle("ADD SUBLET  ", for: .normal)
         addButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         addButton.setTitleColor(UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0), for: .normal)
-        addButton.setImage(UIImage(named: "caret_green"), for: .normal)
+        addButton.setImage(UIImage(named: "caret_teal"), for: .normal)
         addButton.semanticContentAttribute = .forceRightToLeft
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addButton)
         
         lineView3 = UIView()
@@ -166,6 +169,13 @@ class ProfileView: UIViewController {
             tableView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             tableView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
             tableView2.heightAnchor.constraint(equalToConstant: 210)
+        ])
+        
+        NSLayoutConstraint.activate([
+            addButton.topAnchor.constraint(equalTo: tableView2.bottomAnchor, constant: 24),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            addButton.widthAnchor.constraint(equalToConstant: 120),
+            addButton.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([

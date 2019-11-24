@@ -15,12 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        var nav = window?.rootViewController as? UINavigationController
-        nav = UINavigationController.init(rootViewController: CustomTabBarController())
-        nav!.isNavigationBarHidden = true
-        window?.rootViewController = nav
-//        window?.rootViewController = UINavigationController(rootViewController: CustomTabBarController())
+//        var nav = window?.rootViewController as? UINavigationController
+//        nav = UINavigationController.init(rootViewController: CustomTabBarController())
+//        nav!.isNavigationBarHidden = true
+//        window?.rootViewController = nav
+        
+        window?.rootViewController = UINavigationController(rootViewController: LoginView())
 //        window?.rootViewController = CustomTabBarController()
         window?.makeKeyAndVisible()
         return true

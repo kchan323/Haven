@@ -49,11 +49,12 @@ class SaveView: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         
-        addButton = UIButton(frame: CGRect(x: view.frame.width - 50, y: 50, width: 20, height: 20))
+        addButton = UIButton()
         let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
         addButton.setImage(image, for: .normal)
         addButton.tintColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addButton)
         
         titleLabel = UILabel()
@@ -96,13 +97,14 @@ class SaveView: UIViewController {
         collectionView1.delegate = self
         view.addSubview(collectionView1)
         
-        viewAllButton1 = UIButton(frame: CGRect(x: view.frame.width - 125, y: 380, width: 100, height: 20))
+        viewAllButton1 = UIButton()
         viewAllButton1.setTitle("VIEW ALL  ", for: .normal)
         viewAllButton1.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         viewAllButton1.setTitleColor(UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0), for: .normal)
-        viewAllButton1.setImage(UIImage(named: "caret_green"), for: .normal)
+        viewAllButton1.setImage(UIImage(named: "caret_teal"), for: .normal)
         viewAllButton1.semanticContentAttribute = .forceRightToLeft
         viewAllButton1.addTarget(self, action: #selector(viewAllButtonPressed1), for: .touchUpInside)
+        viewAllButton1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(viewAllButton1)
         
         headerLabel2 = UILabel()
@@ -138,13 +140,14 @@ class SaveView: UIViewController {
         collectionView2.delegate = self
         view.addSubview(collectionView2)
         
-        viewAllButton2 = UIButton(frame: CGRect(x: view.frame.width - 125, y: 685, width: 100, height: 20))
+        viewAllButton2 = UIButton()
         viewAllButton2.setTitle("VIEW ALL  ", for: .normal)
         viewAllButton2.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         viewAllButton2.setTitleColor(UIColor(red: 0.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0), for: .normal)
-        viewAllButton2.setImage(UIImage(named: "caret_green"), for: .normal)
+        viewAllButton2.setImage(UIImage(named: "caret_teal"), for: .normal)
         viewAllButton2.semanticContentAttribute = .forceRightToLeft
         viewAllButton2.addTarget(self, action: #selector(viewAllButtonPressed2), for: .touchUpInside)
+        viewAllButton2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(viewAllButton2)
         
         lineView3 = UIView()
@@ -152,17 +155,25 @@ class SaveView: UIViewController {
         lineView3.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView3)
         
-        addCollectionButton = UIButton(frame: CGRect(x: 40, y: view.frame.height - 150, width: 335, height: 33))
+        addCollectionButton = UIButton()
         addCollectionButton.setTitle("Add a Collection", for: .normal)
         addCollectionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         addCollectionButton.setTitleColor(UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0), for: .normal)
         addCollectionButton.addTarget(self, action: #selector(addCollectionButtonPressed), for: .touchUpInside)
+        addCollectionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addCollectionButton)
                 
         setupConstraints()
     }
         
     func setupConstraints() {
+        NSLayoutConstraint.activate([
+            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            addButton.widthAnchor.constraint(equalToConstant: 22),
+            addButton.heightAnchor.constraint(equalToConstant: 22)
+        ])
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
@@ -192,19 +203,26 @@ class SaveView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            headerLabel2.topAnchor.constraint(equalTo: collectionView1.bottomAnchor, constant: 70),
+            viewAllButton1.topAnchor.constraint(equalTo: collectionView1.bottomAnchor, constant: 24),
+            viewAllButton1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            viewAllButton1.widthAnchor.constraint(equalToConstant: 100),
+            viewAllButton1.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            headerLabel2.topAnchor.constraint(equalTo: viewAllButton1.bottomAnchor, constant: 24),
             headerLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             headerLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
             headerLabel2.heightAnchor.constraint(equalToConstant: 48)
         ])
-        
+
         NSLayoutConstraint.activate([
             lineView2.topAnchor.constraint(equalTo: headerLabel2.bottomAnchor),
             lineView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             lineView2.widthAnchor.constraint(equalToConstant: 72),
             lineView2.heightAnchor.constraint(equalToConstant: 6)
         ])
-        
+
         NSLayoutConstraint.activate([
             collectionView2.topAnchor.constraint(equalTo: lineView2.bottomAnchor, constant: 24),
             collectionView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
@@ -213,10 +231,23 @@ class SaveView: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            viewAllButton2.topAnchor.constraint(equalTo: collectionView2.bottomAnchor, constant: 24),
+            viewAllButton2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            viewAllButton2.widthAnchor.constraint(equalToConstant: 100),
+            viewAllButton2.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
             lineView3.topAnchor.constraint(equalTo: viewAllButton2.bottomAnchor, constant: 24),
             lineView3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             lineView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             lineView3.heightAnchor.constraint(equalToConstant: 2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            addCollectionButton.topAnchor.constraint(equalTo: lineView3.bottomAnchor, constant: 13),
+            addCollectionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addCollectionButton.heightAnchor.constraint(equalToConstant: 33)
         ])
     }
     
