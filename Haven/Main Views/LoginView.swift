@@ -53,7 +53,7 @@ class LoginView: UIViewController {
         view.addSubview(descriptionLabel)
         
         nameTextField = UITextField()
-        nameTextField.text = "Enter your name."
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter your name.")
         nameTextField.textColor = .black
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nameTextField)

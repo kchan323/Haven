@@ -188,6 +188,8 @@ class ProfileView: UIViewController {
     
     @objc func addButtonPressed(sender: UIButton!) {
         print("pressed add sublet button")
+        let viewController = AddSubletViewController()
+        navigationController!.pushViewController(viewController, animated: true)
     }
 }
 
@@ -226,7 +228,7 @@ extension ProfileView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == self.tableView1) {
-            let Apartment = Drafts[indexPath.row]
+                let Apartment = Drafts[indexPath.row]
             let viewController = DetailViewController(apartment: Apartment)
 //            viewController.delegate = self
             navigationController!.pushViewController(viewController, animated: true)
