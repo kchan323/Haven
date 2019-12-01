@@ -25,12 +25,21 @@ class AddSubletViewController: UIViewController {
     var describeLabel: UILabel!
     var aptLabel: UILabel!
     var houseLabel: UILabel!
-    //var emptyBoxImageView: UIImageView!
-    //var filledBoxImageView: UIImageView!
-    var boxButton1: UIButton!
+    
+    var boxButton1: UIButton! //aptment
     var pressed1: Bool
-    var boxButton2: UIButton!
+    var boxButton2: UIButton! //house
     var pressed2: Bool
+    var boxButton3: UIButton! //electricity
+    var pressed3: Bool
+    var boxButton4: UIButton! //wifi
+    var pressed4: Bool
+    var boxButton5: UIButton! //water
+    var pressed5: Bool
+    var boxButton6: UIButton! //recycling
+    var pressed6: Bool
+    var boxButton7: UIButton! //heating
+    var pressed7: Bool
     
     var rentLabel: UILabel!
     var lineView4: UIView!
@@ -40,12 +49,30 @@ class AddSubletViewController: UIViewController {
     var priceTextField: UITextField!
     
     var perMonthLabel: UILabel!
+    var includedWithRentLabel: UILabel!
+    var electricityLabel: UILabel!
+    var wifiLabel: UILabel!
+    var waterLabel: UILabel!
+    var recyclingLabel: UILabel!
+    var heatingLabel: UILabel!
+    
+    var availabilityLabel: UILabel!
+    var lineView5: UIView!
+    var whoLivesLabel: UILabel!
+    var undergradsLabel: UILabel!
+    var gradsLabel: UILabel!
+    
     
 
     
     init(){
         self.pressed1 = false
         self.pressed2 = false
+        self.pressed3 = false
+        self.pressed4 = false
+        self.pressed5 = false
+        self.pressed6 = false
+        self.pressed7 = false
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -165,6 +192,41 @@ class AddSubletViewController: UIViewController {
         boxButton2.addTarget(self, action: #selector(button2Pressed), for: .touchUpInside)
         view.addSubview(boxButton2)
         
+        boxButton3 = UIButton(frame: CGRect(x: 355, y: 634, width: 20, height: 20))
+        boxButton3.layer.borderWidth = 2
+        boxButton3.layer.cornerRadius = 4
+        boxButton3.layer.borderColor = UIColor.lightGray.cgColor
+        boxButton3.addTarget(self, action: #selector(button3Pressed), for: .touchUpInside)
+        view.addSubview(boxButton3)
+        
+        boxButton4 = UIButton(frame: CGRect(x: 355, y: 663, width: 20, height: 20))
+        boxButton4.layer.borderWidth = 2
+        boxButton4.layer.cornerRadius = 4
+        boxButton4.layer.borderColor = UIColor.lightGray.cgColor
+        boxButton4.addTarget(self, action: #selector(button4Pressed), for: .touchUpInside)
+        view.addSubview(boxButton4)
+        
+        boxButton5 = UIButton(frame: CGRect(x: 355, y: 692, width: 20, height: 20))
+        boxButton5.layer.borderWidth = 2
+        boxButton5.layer.cornerRadius = 4
+        boxButton5.layer.borderColor = UIColor.lightGray.cgColor
+        boxButton5.addTarget(self, action: #selector(button5Pressed), for: .touchUpInside)
+        view.addSubview(boxButton5)
+        
+        boxButton6 = UIButton(frame: CGRect(x: 355, y: 721, width: 20, height: 20))
+        boxButton6.layer.borderWidth = 2
+        boxButton6.layer.cornerRadius = 4
+        boxButton6.layer.borderColor = UIColor.lightGray.cgColor
+        boxButton6.addTarget(self, action: #selector(button6Pressed), for: .touchUpInside)
+        view.addSubview(boxButton6)
+        
+        boxButton7 = UIButton(frame: CGRect(x: 355, y: 750, width: 20, height: 20))
+        boxButton7.layer.borderWidth = 2
+        boxButton7.layer.cornerRadius = 4
+        boxButton7.layer.borderColor = UIColor.lightGray.cgColor
+        boxButton7.addTarget(self, action: #selector(button7Pressed), for: .touchUpInside)
+        view.addSubview(boxButton7)
+        
         rentLabel = UILabel()
         rentLabel.text = "Rent"
         rentLabel.textColor = .black
@@ -207,6 +269,60 @@ class AddSubletViewController: UIViewController {
         
         perMonthLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(perMonthLabel)
+        
+        includedWithRentLabel = UILabel()
+            includedWithRentLabel.text = "What is included with rent?"
+            includedWithRentLabel.textColor = .black
+            includedWithRentLabel.font = UIFont.systemFont(ofSize: 12)
+        includedWithRentLabel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(includedWithRentLabel)
+        
+        electricityLabel = UILabel()
+        electricityLabel.text = "Electricity"
+        electricityLabel.textColor = .lightGray
+        electricityLabel.font = UIFont.systemFont(ofSize: 12)
+        electricityLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(electricityLabel)
+        
+        wifiLabel = UILabel()
+        wifiLabel.text = "Wifi"
+        wifiLabel.textColor = .lightGray
+        wifiLabel.font = UIFont.systemFont(ofSize: 12)
+        wifiLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(wifiLabel)
+        
+        waterLabel = UILabel()
+        waterLabel.text = "Water"
+        waterLabel.textColor = .lightGray
+        waterLabel.font = UIFont.systemFont(ofSize: 12)
+        waterLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(waterLabel)
+        
+        recyclingLabel = UILabel()
+        recyclingLabel.text = "Garbage/Recycling"
+        recyclingLabel.textColor = .lightGray
+        recyclingLabel.font = UIFont.systemFont(ofSize: 12)
+        recyclingLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(recyclingLabel)
+        
+        heatingLabel = UILabel()
+        heatingLabel.text = "Heating"
+        heatingLabel.textColor = .lightGray
+        heatingLabel.font = UIFont.systemFont(ofSize: 12)
+        heatingLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(heatingLabel)
+        
+        availabilityLabel = UILabel()
+        availabilityLabel.text = "Availability"
+        availabilityLabel.textColor = .black
+        availabilityLabel.font = UIFont.systemFont(ofSize: 20)
+        availabilityLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(availabilityLabel)
+        
+        lineView5 = UIView()
+        lineView5.backgroundColor = UIColor(red: 209.0 / 255.0, green: 209.0 / 255.0, blue: 214.0 / 255.0, alpha: 1.0)
+        lineView5.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(lineView5)
         
         setupConstraints()
         
@@ -345,8 +461,62 @@ class AddSubletViewController: UIViewController {
             perMonthLabel.topAnchor.constraint(equalTo: priceView.bottomAnchor),
         perMonthLabel.heightAnchor.constraint(equalToConstant: 32)
                ])
-
         
+        NSLayoutConstraint.activate([
+            includedWithRentLabel.leadingAnchor.constraint(equalTo: rentLabel.leadingAnchor),
+            includedWithRentLabel.trailingAnchor.constraint(equalTo: rentLabel.trailingAnchor),
+            includedWithRentLabel.topAnchor.constraint(equalTo: perMonthLabel.bottomAnchor, constant: 15),
+        includedWithRentLabel.heightAnchor.constraint(equalToConstant: 15)
+               ])
+
+        NSLayoutConstraint.activate([
+            electricityLabel.leadingAnchor.constraint(equalTo: aptLabel.leadingAnchor),
+            electricityLabel.trailingAnchor.constraint(equalTo: aptLabel.trailingAnchor),
+            electricityLabel.topAnchor.constraint(equalTo: includedWithRentLabel.bottomAnchor, constant: 15),
+            electricityLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            wifiLabel.leadingAnchor.constraint(equalTo: electricityLabel.leadingAnchor),
+            wifiLabel.trailingAnchor.constraint(equalTo: electricityLabel.trailingAnchor),
+            wifiLabel.topAnchor.constraint(equalTo: electricityLabel.bottomAnchor, constant: 15),
+            wifiLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            waterLabel.leadingAnchor.constraint(equalTo: electricityLabel.leadingAnchor),
+            waterLabel.trailingAnchor.constraint(equalTo: electricityLabel.trailingAnchor),
+            waterLabel.topAnchor.constraint(equalTo: wifiLabel.bottomAnchor, constant: 15),
+            waterLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            recyclingLabel.leadingAnchor.constraint(equalTo: electricityLabel.leadingAnchor),
+            recyclingLabel.trailingAnchor.constraint(equalTo: electricityLabel.trailingAnchor),
+            recyclingLabel.topAnchor.constraint(equalTo: waterLabel.bottomAnchor, constant: 15),
+            recyclingLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            heatingLabel.leadingAnchor.constraint(equalTo: electricityLabel.leadingAnchor),
+            heatingLabel.trailingAnchor.constraint(equalTo: electricityLabel.trailingAnchor),
+            heatingLabel.topAnchor.constraint(equalTo: recyclingLabel.bottomAnchor, constant: 15),
+            heatingLabel.heightAnchor.constraint(equalToConstant: 15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            availabilityLabel.topAnchor.constraint(equalTo: heatingLabel.bottomAnchor, constant: 24),
+            availabilityLabel.leadingAnchor.constraint(equalTo: describeLabel.leadingAnchor),
+            availabilityLabel.trailingAnchor.constraint(equalTo: describeLabel.trailingAnchor),
+            availabilityLabel.heightAnchor.constraint(equalToConstant: 38)
+        ])
+        
+        NSLayoutConstraint.activate([
+            lineView5.leadingAnchor.constraint(equalTo: availabilityLabel.leadingAnchor),
+            lineView5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            lineView5.topAnchor.constraint(equalTo: availabilityLabel.bottomAnchor),
+        lineView5.heightAnchor.constraint(equalToConstant: 1)
+        ])
         
     }
     
@@ -379,6 +549,75 @@ class AddSubletViewController: UIViewController {
             pressed2 = true
         }
     }
+    
+    @objc func button3Pressed(sender: UIButton!) {
+        if pressed3{
+            boxButton3.layer.backgroundColor = UIColor.white.cgColor
+            electricityLabel.textColor = UIColor.lightGray
+            pressed3 = false
+        }
+        else{
+            boxButton3.layer.backgroundColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0).cgColor
+            electricityLabel.textColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+            pressed3 = true
+        }
+    }
+
+    @objc func button4Pressed(sender: UIButton!) {
+        if pressed4{
+            boxButton4.layer.backgroundColor = UIColor.white.cgColor
+            wifiLabel.textColor = UIColor.lightGray
+            pressed4 = false
+        }
+        else{
+            boxButton4.layer.backgroundColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0).cgColor
+            wifiLabel.textColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+            pressed4 = true
+        }
+    }
+
+    
+    @objc func button5Pressed(sender: UIButton!) {
+        if pressed5{
+            boxButton5.layer.backgroundColor = UIColor.white.cgColor
+            waterLabel.textColor = UIColor.lightGray
+            pressed5 = false
+        }
+        else{
+            boxButton5.layer.backgroundColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0).cgColor
+            waterLabel.textColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+            pressed5 = true
+        }
+    }
+
+    
+    @objc func button6Pressed(sender: UIButton!) {
+        if pressed6{
+            boxButton6.layer.backgroundColor = UIColor.white.cgColor
+            recyclingLabel.textColor = UIColor.lightGray
+            pressed6 = false
+        }
+        else{
+            boxButton6.layer.backgroundColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0).cgColor
+            recyclingLabel.textColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+            pressed6 = true
+        }
+    }
+
+    
+    @objc func button7Pressed(sender: UIButton!) {
+        if pressed7{
+            boxButton7.layer.backgroundColor = UIColor.white.cgColor
+            heatingLabel.textColor = UIColor.lightGray
+            pressed7 = false
+        }
+        else{
+            boxButton7.layer.backgroundColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0).cgColor
+            heatingLabel.textColor = UIColor(red: 0.0 / 255.0, green: 209.0 / 255.0, blue: 199.0 / 255.0, alpha: 1.0)
+            pressed7 = true
+        }
+    }
+
     
 }
 
