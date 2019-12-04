@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
         titleLabel1 = UILabel()
         titleLabel1.text = apartment.title.uppercased()
         titleLabel1.textColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0)
-        titleLabel1.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel1.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel1)
 
@@ -129,16 +129,16 @@ class DetailViewController: UIViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -15),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            backButton.heightAnchor.constraint(equalToConstant: 50),
-            backButton.widthAnchor.constraint(equalToConstant: 100)
+            backButton.heightAnchor.constraint(equalToConstant: 35),
+            backButton.widthAnchor.constraint(equalToConstant: 70)
         ])
         
         NSLayoutConstraint.activate([
             titleLabel1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel1.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            titleLabel1.heightAnchor.constraint(equalToConstant: 24)
+            titleLabel1.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([

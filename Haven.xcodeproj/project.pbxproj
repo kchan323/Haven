@@ -86,10 +86,10 @@
 				840CF4BE23977FC200817BC1 /* Collection.swift */,
 				84CEB58A2384FAB90008C469 /* DetailViewController.swift */,
 				840CF4BC23977F9200817BC1 /* ViewAllController.swift */,
+				C286D89523909DDA00819ABD /* AddSubletViewController.swift */,
 				84B7FE8E2381FA3E000E95C3 /* Assets.xcassets */,
 				84B7FE932381FA3E000E95C3 /* LaunchScreen.storyboard */,
 				84B7FE962381FA3E000E95C3 /* Info.plist */,
-				C286D89523909DDA00819ABD /* AddSubletViewController.swift */,
 			);
 			path = Haven;
 			sourceTree = "<group>";

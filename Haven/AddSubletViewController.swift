@@ -53,9 +53,9 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        super.init(coder: aDecoder)
+//        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -86,22 +86,23 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         scrollView.isScrollEnabled = true
         view.addSubview(scrollView)
         
-        backButton = UIButton(frame: CGRect(x: -15, y: 50, width: 100, height: 50))
+        backButton = UIButton()
         backButton.setImage(UIImage (named: "caret_purple"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backButton)
         
         titleLabel = UILabel()
         titleLabel.text = "ADD A SUBLET"
         titleLabel.textColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0)
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         
         generalLabel = UILabel()
         generalLabel.text = "General Information"
         generalLabel.textColor = .black
-        generalLabel.font = UIFont.systemFont(ofSize: 20)
+        generalLabel.font = UIFont.systemFont(ofSize: 24)
         generalLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(generalLabel)
         
@@ -113,14 +114,13 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         defineLabel = UILabel()
         defineLabel.text = "Define your space."
         defineLabel.textColor = .black
-        defineLabel.font = UIFont.systemFont(ofSize: 12)
+        defineLabel.font = UIFont.systemFont(ofSize: 14)
         defineLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(defineLabel)
         
         aptTitleTextField = UITextField()
         aptTitleTextField.attributedPlaceholder = NSAttributedString(string: "Enter Apartment Title.")
         aptTitleTextField.textColor = .black
-        
         aptTitleTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(aptTitleTextField)
         
@@ -157,42 +157,44 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         describeLabel = UILabel()
         describeLabel.text = "Describe your space."
         describeLabel.textColor = .black
-        describeLabel.font = UIFont.systemFont(ofSize: 12)
+        describeLabel.font = UIFont.systemFont(ofSize: 14)
         describeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(describeLabel)
         
         aptLabel = UILabel()
         aptLabel.text = "Apartment"
         aptLabel.textColor = .lightGray
-        aptLabel.font = UIFont.systemFont(ofSize: 12)
+        aptLabel.font = UIFont.systemFont(ofSize: 14)
         aptLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(aptLabel)
         
         houseLabel = UILabel()
         houseLabel.text = "House"
         houseLabel.textColor = .lightGray
-        houseLabel.font = UIFont.systemFont(ofSize: 12)
+        houseLabel.font = UIFont.systemFont(ofSize: 14)
         houseLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(houseLabel)
         
-        boxButton1 = UIButton(frame: CGRect(x: 355, y: 368, width: 20, height: 20))
+        boxButton1 = UIButton()
         boxButton1.layer.borderWidth = 2
         boxButton1.layer.cornerRadius = 4
         boxButton1.layer.borderColor = UIColor.lightGray.cgColor
         boxButton1.addTarget(self, action: #selector(button1Pressed), for: .touchUpInside)
+        boxButton1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(boxButton1)
         
-        boxButton2 = UIButton(frame: CGRect(x: 355, y: 397, width: 20, height: 20))
+        boxButton2 = UIButton()
         boxButton2.layer.borderWidth = 2
         boxButton2.layer.cornerRadius = 4
         boxButton2.layer.borderColor = UIColor.lightGray.cgColor
         boxButton2.addTarget(self, action: #selector(button2Pressed), for: .touchUpInside)
+        boxButton2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(boxButton2)
         
         rentLabel = UILabel()
         rentLabel.text = "Rent"
         rentLabel.textColor = .black
-        rentLabel.font = UIFont.systemFont(ofSize: 20)
+        rentLabel.font = UIFont.systemFont(ofSize: 24)
         rentLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(rentLabel)
         
@@ -204,19 +206,23 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         setLabel = UILabel()
         setLabel.text = "Set your price."
         setLabel.textColor = .black
-        setLabel.font = UIFont.systemFont(ofSize: 12)
-    setLabel.translatesAutoresizingMaskIntoConstraints = false
+        setLabel.font = UIFont.systemFont(ofSize: 14)
+        setLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(setLabel)
         
         priceView = UIView()
         priceView.backgroundColor = UIColor(red: 0.0 / 255.0, green: 255.0 / 255.0, blue: 211.0 / 255.0, alpha: 0.2)
         priceView.layer.cornerRadius = 10
         priceView.layer.masksToBounds = true
+        let color = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
+        priceView.layer.masksToBounds = true
+        priceView.layer.borderWidth = 2
+        priceView.layer.borderColor = color.cgColor
         priceView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(priceView)
         
         priceTextField = UITextField()
-        priceTextField.attributedPlaceholder = NSAttributedString(string: "Set Rent.")
+        priceTextField.attributedPlaceholder = NSAttributedString(string: "Rent.")
         priceTextField.textColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
         priceTextField.textAlignment = .right
         priceTextField.font = UIFont.systemFont(ofSize: 24)
@@ -224,17 +230,17 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         view.addSubview(priceTextField)
         
         perMonthLabel = UILabel()
-        perMonthLabel.textColor = UIColor.gray
+        perMonthLabel.textColor = UIColor(red: 209.0 / 255.0, green: 209.0 / 255.0, blue: 214.0 / 255.0, alpha: 1.0)
         perMonthLabel.text = "PER MONTH"
-        priceTextField.font = UIFont.systemFont(ofSize: 20)
-        
+        perMonthLabel.textAlignment = .right
+        perMonthLabel.font = UIFont.boldSystemFont(ofSize: 14)
         perMonthLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(perMonthLabel)
         
         moreInfoLabel = UILabel()
         moreInfoLabel.text = "More Information"
         moreInfoLabel.textColor = .black
-        moreInfoLabel.font = UIFont.systemFont(ofSize: 20)
+        moreInfoLabel.font = UIFont.systemFont(ofSize: 24)
         moreInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(moreInfoLabel)
         
@@ -244,35 +250,40 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         view.addSubview(lineView5)
         
         addCaptionLabel = UILabel()
-        addCaptionLabel.text = "Add a caption for your apartment."
+        addCaptionLabel.text = "Add a description for your apartment."
         addCaptionLabel.textColor = .black
-        addCaptionLabel.font = UIFont.systemFont(ofSize: 12)
+        addCaptionLabel.font = UIFont.systemFont(ofSize: 14)
         addCaptionLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addCaptionLabel)
         
         captionTextView = UITextView()
         captionTextView.textColor = UIColor.black
         captionTextView.backgroundColor = .white
-        captionTextView.layer.borderColor = UIColor.gray.cgColor
-        captionTextView.layer.borderWidth = 1.0
+        let color2 = UIColor(red: 209.0 / 255.0, green: 209.0 / 255.0, blue: 214.0 / 255.0, alpha: 1.0)
+        captionTextView.layer.masksToBounds = true
+        captionTextView.layer.borderWidth = 1
+        captionTextView.layer.borderColor = color2.cgColor
         captionTextView.layer.cornerRadius = 5.0
         captionTextView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(captionTextView)
         
-        addPhotoButton = UIButton(frame: CGRect(x: 27, y: 778, width: 120, height: 40))
+        addPhotoButton = UIButton()
         addPhotoButton.layer.borderWidth = 2
         addPhotoButton.layer.cornerRadius = 4
         addPhotoButton.layer.borderColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0).cgColor
         addPhotoButton.layer.backgroundColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0).cgColor
         addPhotoButton.setTitle("ADD PHOTO", for: UIControl.State.normal)
         addPhotoButton.addTarget(self, action: #selector(addPhotos), for: .touchUpInside)
+        addPhotoButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addPhotoButton)
         
         selectedImageView = UIImageView()
-        selectedImageView.frame = CGRect(x: 200, y: 778, width: 120, height: 100)
+//        selectedImageView.frame = CGRect(x: 200, y: 778, width: 120, height: 100)
+        selectedImageView.image = UIImage (named: "placeholder")
         selectedImageView.layer.borderWidth = 1
         selectedImageView.layer.cornerRadius = 4
         selectedImageView.layer.borderColor = UIColor.black.cgColor
+        selectedImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(selectedImageView)
         
         setupConstraints()
@@ -281,16 +292,23 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            backButton.heightAnchor.constraint(equalToConstant: 35),
+            backButton.widthAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24)
+            titleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
             generalLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             generalLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             generalLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            generalLabel.heightAnchor.constraint(equalToConstant: 38)
+            generalLabel.heightAnchor.constraint(equalToConstant: 48)
         ])
         
         NSLayoutConstraint.activate([
@@ -302,20 +320,20 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         NSLayoutConstraint.activate([
             defineLabel.leadingAnchor.constraint(equalTo: generalLabel.leadingAnchor),
             defineLabel.trailingAnchor.constraint(equalTo: generalLabel.trailingAnchor),
-            defineLabel.topAnchor.constraint(equalTo: lineView1.bottomAnchor, constant: 15),
-            defineLabel.heightAnchor.constraint(equalToConstant: 15)
+            defineLabel.topAnchor.constraint(equalTo: lineView1.bottomAnchor, constant: 12),
+            defineLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         NSLayoutConstraint.activate([
             aptTitleTextField.topAnchor.constraint(equalTo: defineLabel.bottomAnchor, constant: 12),
-            aptTitleTextField.leadingAnchor.constraint(equalTo: defineLabel.leadingAnchor, constant: 10),
+            aptTitleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             aptTitleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            aptTitleTextField.heightAnchor.constraint(equalToConstant: 27)
+            aptTitleTextField.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
             lineView2.topAnchor.constraint(equalTo: aptTitleTextField.bottomAnchor),
-            lineView2.leadingAnchor.constraint(equalTo: aptTitleTextField.leadingAnchor),
+            lineView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             lineView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             lineView2.heightAnchor.constraint(equalToConstant: 2)
         ])
@@ -324,16 +342,14 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
             aptTitleLabel.topAnchor.constraint(equalTo: lineView2.bottomAnchor),
             aptTitleLabel.leadingAnchor.constraint(equalTo: lineView2.leadingAnchor),
             aptTitleLabel.trailingAnchor.constraint(equalTo: lineView2.trailingAnchor),
-            aptTitleLabel.heightAnchor.constraint(equalToConstant: 22)
+            aptTitleLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
-        
-        
         NSLayoutConstraint.activate([
-            locationTextField.topAnchor.constraint(equalTo: aptTitleLabel.bottomAnchor, constant: 20),
+            locationTextField.topAnchor.constraint(equalTo: aptTitleLabel.bottomAnchor, constant: 12),
             locationTextField.leadingAnchor.constraint(equalTo: aptTitleLabel.leadingAnchor),
             locationTextField.trailingAnchor.constraint(equalTo: aptTitleLabel.trailingAnchor),
-            locationTextField.heightAnchor.constraint(equalToConstant: 27)
+            locationTextField.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
@@ -347,98 +363,128 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
             locationLabel.topAnchor.constraint(equalTo: lineView3.bottomAnchor),
             locationLabel.leadingAnchor.constraint(equalTo: lineView3.leadingAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: lineView3.trailingAnchor),
-            locationLabel.heightAnchor.constraint(equalToConstant: 22)
+            locationLabel.heightAnchor.constraint(equalToConstant: 32)
         ])
         
         NSLayoutConstraint.activate([
             describeLabel.leadingAnchor.constraint(equalTo: defineLabel.leadingAnchor),
             describeLabel.trailingAnchor.constraint(equalTo: defineLabel.trailingAnchor),
-            describeLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 15),
-            describeLabel.heightAnchor.constraint(equalToConstant: 15)
+            describeLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 12),
+            describeLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         NSLayoutConstraint.activate([
-            aptLabel.leadingAnchor.constraint(equalTo: describeLabel.leadingAnchor, constant: 10),
+            aptLabel.leadingAnchor.constraint(equalTo: describeLabel.leadingAnchor, constant: 15),
             aptLabel.trailingAnchor.constraint(equalTo: describeLabel.trailingAnchor),
-            aptLabel.topAnchor.constraint(equalTo: describeLabel.bottomAnchor, constant: 15),
-            aptLabel.heightAnchor.constraint(equalToConstant: 15)
+            aptLabel.topAnchor.constraint(equalTo: describeLabel.bottomAnchor, constant: 12),
+            aptLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         NSLayoutConstraint.activate([
             houseLabel.leadingAnchor.constraint(equalTo: aptLabel.leadingAnchor),
             houseLabel.trailingAnchor.constraint(equalTo: aptLabel.trailingAnchor),
-            houseLabel.topAnchor.constraint(equalTo: aptLabel.bottomAnchor, constant: 15),
-            houseLabel.heightAnchor.constraint(equalToConstant: 15)
+            houseLabel.topAnchor.constraint(equalTo: aptLabel.bottomAnchor, constant: 12),
+            houseLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        NSLayoutConstraint.activate([
+            boxButton1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            boxButton1.topAnchor.constraint(equalTo: aptLabel.topAnchor),
+            boxButton1.heightAnchor.constraint(equalToConstant: 20),
+            boxButton1.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            boxButton2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            boxButton2.topAnchor.constraint(equalTo: houseLabel.topAnchor),
+            boxButton2.heightAnchor.constraint(equalToConstant: 20),
+            boxButton2.widthAnchor.constraint(equalToConstant: 20)
         ])
         
        NSLayoutConstraint.activate([
-            rentLabel.topAnchor.constraint(equalTo: houseLabel.bottomAnchor, constant: 24),
-            rentLabel.leadingAnchor.constraint(equalTo: describeLabel.leadingAnchor),
-            rentLabel.trailingAnchor.constraint(equalTo: describeLabel.trailingAnchor),
-            rentLabel.heightAnchor.constraint(equalToConstant: 38)
+            rentLabel.topAnchor.constraint(equalTo: houseLabel.bottomAnchor, constant: 10),
+            rentLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            rentLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            rentLabel.heightAnchor.constraint(equalToConstant: 48)
         ])
         
         NSLayoutConstraint.activate([
             lineView4.leadingAnchor.constraint(equalTo: rentLabel.leadingAnchor),
             lineView4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             lineView4.topAnchor.constraint(equalTo: rentLabel.bottomAnchor),
-        lineView4.heightAnchor.constraint(equalToConstant: 1)
+            lineView4.heightAnchor.constraint(equalToConstant: 1)
         ])
         
         NSLayoutConstraint.activate([
             setLabel.leadingAnchor.constraint(equalTo: rentLabel.leadingAnchor),
             setLabel.trailingAnchor.constraint(equalTo: rentLabel.trailingAnchor),
-            setLabel.topAnchor.constraint(equalTo: lineView4.bottomAnchor, constant: 15),
-        setLabel.heightAnchor.constraint(equalToConstant: 15)
-               ])
+            setLabel.topAnchor.constraint(equalTo: lineView4.bottomAnchor, constant: 12),
+            setLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
         
         NSLayoutConstraint.activate([
-                   priceView.topAnchor.constraint(equalTo: setLabel.bottomAnchor, constant: 14),
-                   priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -38),
-                   priceView.widthAnchor.constraint(equalToConstant: 168),
-                   priceView.heightAnchor.constraint(equalToConstant: 48)
-               ])
+            priceView.topAnchor.constraint(equalTo: setLabel.bottomAnchor, constant: 12),
+            priceView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            priceView.widthAnchor.constraint(equalToConstant: 168),
+            priceView.heightAnchor.constraint(equalToConstant: 48)
+        ])
         
         NSLayoutConstraint.activate([
-                   priceTextField.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 12),
-                   priceTextField.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: -8),
-                   priceTextField.trailingAnchor.constraint(equalTo: priceView.trailingAnchor, constant: -12),
-                   priceTextField.heightAnchor.constraint(equalToConstant: 20)
-               ])
-        
+            priceTextField.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 8),
+            priceTextField.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: 12),
+            priceTextField.trailingAnchor.constraint(equalTo: priceView.trailingAnchor, constant: -12),
+            priceTextField.bottomAnchor.constraint(equalTo: priceView.bottomAnchor, constant: -8)
+        ])
+ 
         NSLayoutConstraint.activate([
-            perMonthLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 272),
+            perMonthLabel.widthAnchor.constraint(equalToConstant: 132),
             perMonthLabel.trailingAnchor.constraint(equalTo: priceView.trailingAnchor),
             perMonthLabel.topAnchor.constraint(equalTo: priceView.bottomAnchor),
-        perMonthLabel.heightAnchor.constraint(equalToConstant: 32)
-               ])
+            perMonthLabel.heightAnchor.constraint(equalToConstant: 32)
+        ])
         
         NSLayoutConstraint.activate([
-            moreInfoLabel.topAnchor.constraint(equalTo: perMonthLabel.bottomAnchor, constant: 24),
-            moreInfoLabel.leadingAnchor.constraint(equalTo: describeLabel.leadingAnchor),
-            moreInfoLabel.trailingAnchor.constraint(equalTo: describeLabel.trailingAnchor),
-            moreInfoLabel.heightAnchor.constraint(equalToConstant: 38)
+//            moreInfoLabel.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 10),
+            moreInfoLabel.topAnchor.constraint(equalTo: perMonthLabel.bottomAnchor, constant: 10),
+            moreInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            moreInfoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            moreInfoLabel.heightAnchor.constraint(equalToConstant: 48)
         ])
         
         NSLayoutConstraint.activate([
             lineView5.leadingAnchor.constraint(equalTo: rentLabel.leadingAnchor),
             lineView5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             lineView5.topAnchor.constraint(equalTo: moreInfoLabel.bottomAnchor),
-        lineView5.heightAnchor.constraint(equalToConstant: 1)
+            lineView5.heightAnchor.constraint(equalToConstant: 1)
         ])
         
         NSLayoutConstraint.activate([
             addCaptionLabel.leadingAnchor.constraint(equalTo: rentLabel.leadingAnchor),
             addCaptionLabel.trailingAnchor.constraint(equalTo: rentLabel.trailingAnchor),
-            addCaptionLabel.topAnchor.constraint(equalTo: lineView5.bottomAnchor, constant: 15),
-        addCaptionLabel.heightAnchor.constraint(equalToConstant: 15)
-               ])
+            addCaptionLabel.topAnchor.constraint(equalTo: lineView5.bottomAnchor, constant: 12),
+            addCaptionLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
         
         NSLayoutConstraint.activate([
             captionTextView.topAnchor.constraint(equalTo: addCaptionLabel.bottomAnchor, constant: 12),
             captionTextView.leadingAnchor.constraint(equalTo: addCaptionLabel.leadingAnchor),
-            captionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            captionTextView.heightAnchor.constraint(equalToConstant: 70)
+            captionTextView.trailingAnchor.constraint(equalTo: addCaptionLabel.trailingAnchor),
+            captionTextView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            addPhotoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            addPhotoButton.topAnchor.constraint(equalTo: captionTextView.bottomAnchor, constant: 12),
+            addPhotoButton.heightAnchor.constraint(equalToConstant: 40),
+            addPhotoButton.widthAnchor.constraint(equalToConstant: 120)
+        ])
+        
+        NSLayoutConstraint.activate([
+            selectedImageView.leadingAnchor.constraint(equalTo: addPhotoButton.trailingAnchor, constant: 24),
+//            selectedImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            selectedImageView.heightAnchor.constraint(equalToConstant: 100),
+            selectedImageView.topAnchor.constraint(equalTo: addPhotoButton.topAnchor),
+            selectedImageView.widthAnchor.constraint(equalToConstant: 150)
         ])
         
     }
@@ -473,8 +519,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    
-    
     @objc func addPhotos(sender: UIButton!){
         
         let vc = UIImagePickerController()
@@ -498,7 +542,3 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
 }
-
-
-
-
