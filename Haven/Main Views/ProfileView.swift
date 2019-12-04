@@ -67,6 +67,7 @@ class ProfileView: UIViewController {
         tableView1.layer.borderWidth = 1
         tableView1.layer.borderColor = UIColor.gray.cgColor
         tableView1.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
+        tableView1.backgroundColor = .white
         tableView1.showsVerticalScrollIndicator = false
         tableView1.translatesAutoresizingMaskIntoConstraints = false
         tableView1.register(DraftTableViewCell.self, forCellReuseIdentifier: reuseIdentifier1)
@@ -98,6 +99,7 @@ class ProfileView: UIViewController {
         tableView2.layer.borderWidth = 1
         tableView2.layer.borderColor = UIColor.gray.cgColor
         tableView2.layer.borderColor = tableView1.layer.borderColor?.copy(alpha: 0.25)
+        tableView2.backgroundColor = .white
         tableView2.showsVerticalScrollIndicator = false
         tableView2.translatesAutoresizingMaskIntoConstraints = false
         tableView2.register(ListingTableViewCell.self, forCellReuseIdentifier: reuseIdentifier2)
@@ -117,7 +119,7 @@ class ProfileView: UIViewController {
         lineView3.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
         lineView3.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView3)
-        
+                
         setupConstraints()
     }
     
@@ -147,7 +149,7 @@ class ProfileView: UIViewController {
             tableView1.topAnchor.constraint(equalTo: lineView1.bottomAnchor, constant: 24),
             tableView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             tableView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            tableView1.heightAnchor.constraint(equalToConstant: 210)
+            tableView1.heightAnchor.constraint(equalToConstant: view.frame.height/4.5)
         ])
         
         NSLayoutConstraint.activate([
@@ -168,7 +170,7 @@ class ProfileView: UIViewController {
             tableView2.topAnchor.constraint(equalTo: lineView2.bottomAnchor, constant: 24),
             tableView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             tableView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
-            tableView2.heightAnchor.constraint(equalToConstant: 210)
+            tableView2.heightAnchor.constraint(equalToConstant: view.frame.height/4.5)
         ])
         
         NSLayoutConstraint.activate([
@@ -228,7 +230,7 @@ extension ProfileView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == self.tableView1) {
-                let Apartment = Drafts[indexPath.row]
+            let Apartment = Drafts[indexPath.row]
             let viewController = DetailViewController(apartment: Apartment)
 //            viewController.delegate = self
             navigationController!.pushViewController(viewController, animated: true)

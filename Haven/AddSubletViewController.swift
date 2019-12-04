@@ -46,9 +46,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     var addPhotoButton: UIButton!
     var selectedImageView: UIImageView!
     
-    
-    
-    
     init(){
         self.pressed1 = false
         self.pressed2 = false
@@ -64,6 +61,7 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.hideKeyboardWhenTappedAround()
 
         scrollView = UIScrollView(frame: view.bounds)
         let contentWidth = view.bounds.width
@@ -254,6 +252,7 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         
         captionTextView = UITextView()
         captionTextView.textColor = UIColor.black
+        captionTextView.backgroundColor = .white
         captionTextView.layer.borderColor = UIColor.gray.cgColor
         captionTextView.layer.borderWidth = 1.0
         captionTextView.layer.cornerRadius = 5.0

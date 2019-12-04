@@ -25,6 +25,7 @@ class SearchView: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
+        self.hideKeyboardWhenTappedAround()
         
         topView = UIView()
         topView.backgroundColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0)
@@ -51,6 +52,9 @@ class SearchView: UIViewController {
         searchBar.isTranslucent = false
         searchBar.layer.cornerRadius = 10
         searchBar.layer.masksToBounds = true
+        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideUISearchBar?.textColor = .black
+        searchBar.barTintColor = .white
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchBar)
@@ -58,6 +62,8 @@ class SearchView: UIViewController {
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .white
+        tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
@@ -152,6 +158,12 @@ extension SearchView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.layer.masksToBounds = true
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let Apartment = filteredSearches[indexPath.section]
+        let viewController = DetailViewController(apartment: Apartment)
+        navigationController!.pushViewController(viewController, animated: true)
     }
     
 }

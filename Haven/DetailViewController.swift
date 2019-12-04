@@ -38,9 +38,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        backButton = UIButton(frame: CGRect(x: -15, y: 50, width: 100, height: 50))
+        backButton = UIButton()
         backButton.setImage(UIImage (named: "caret_purple"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backButton)
         
         titleLabel1 = UILabel()
@@ -127,6 +128,13 @@ class DetailViewController: UIViewController {
     }
     
     func setupConstraints() {
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -15),
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            backButton.heightAnchor.constraint(equalToConstant: 50),
+            backButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        
         NSLayoutConstraint.activate([
             titleLabel1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel1.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),

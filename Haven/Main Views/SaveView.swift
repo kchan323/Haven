@@ -44,6 +44,9 @@ class SaveView: UIViewController {
     let apartmentCellReuseIdentifier = "apartmentCellReuseIdentifier"
     let padding: CGFloat = 12
     
+    var collection1: Collection!
+    var collection2: Collection!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -162,7 +165,10 @@ class SaveView: UIViewController {
         addCollectionButton.addTarget(self, action: #selector(addCollectionButtonPressed), for: .touchUpInside)
         addCollectionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addCollectionButton)
-                
+        
+        collection1 = Collection(title: "Spring 2020", apartments: apartments1)
+        collection2 = Collection(title: "Fall 2020", apartments: apartments2)
+        
         setupConstraints()
     }
         
@@ -258,10 +264,16 @@ class SaveView: UIViewController {
     
     @objc func viewAllButtonPressed1(sender: UIButton!) {
         print("pressed view all button 1")
+        let Collection = collection1
+        let viewController = ViewAllController(collection: Collection!)
+        navigationController!.pushViewController(viewController, animated: true)
     }
     
     @objc func viewAllButtonPressed2(sender: UIButton!) {
         print("pressed view all button 2")
+        let Collection = collection2
+        let viewController = ViewAllController(collection: Collection!)
+        navigationController!.pushViewController(viewController, animated: true)
     }
     
     @objc func addCollectionButtonPressed(sender: UIButton!) {
@@ -310,10 +322,18 @@ extension SaveView: UICollectionViewDelegateFlowLayout {
 }
 
 extension SaveView: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if (collectionView == collectionView1) {
-//        }
+        if (collectionView == collectionView1) {
+            let Apartment = apartments1[indexPath.row]
+            let viewController = DetailViewController(apartment: Apartment)
+            navigationController!.pushViewController(viewController, animated: true)
+        }
+        else {
+            let Apartment = apartments2[indexPath.row]
+            let viewController = DetailViewController(apartment: Apartment)
+            navigationController!.pushViewController(viewController, animated: true)
+        }
     }
 }
     
