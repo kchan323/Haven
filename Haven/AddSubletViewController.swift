@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var scrollView: UIScrollView!
     var backButton: UIButton!
@@ -63,27 +63,14 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         view.backgroundColor = .white
         self.hideKeyboardWhenTappedAround()
 
+      
         scrollView = UIScrollView(frame: view.bounds)
-        let contentWidth = view.bounds.width
-        let contentHeight = view.bounds.height * 3
-        scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height * 15)
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
         
-        let subviewHeight = CGFloat(120)
-        var currentViewOffset = CGFloat(0);
-
-        while currentViewOffset < contentHeight {
-//            let frame = CGRect(x: 0, y: currentViewOffset, width: contentWidth, height: subviewHeight).insetBy(dx: 5.0, dy: 5.0)
-//            let hue = currentViewOffset/contentHeight
-            //let subview = UIView(frame: frame)
-            //subview.backgroundColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-            let frame = view.bounds
-            let subview = UIView(frame: frame)
-            scrollView.addSubview(subview)
-
-            currentViewOffset += subviewHeight
-        }
         
-        scrollView.isScrollEnabled = true
+        scrollView.delegate = self
         view.addSubview(scrollView)
         
         backButton = UIButton()
@@ -488,6 +475,8 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         ])
         
     }
+    
+    
     
     @objc func backButtonPressed(sender: UIButton!) {
         navigationController?.popViewController(animated: true)
