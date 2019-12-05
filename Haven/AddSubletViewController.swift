@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import Alamofire
 
 class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -46,11 +48,11 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     var captionTextView: UITextView!
     var addPhotoButton: UIButton!
     var selectedImageView: UIImageView!
+    var postSubletButton: UIButton!
     
     init(){
         self.pressed1 = false
         self.pressed2 = false
-
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -277,6 +279,16 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         selectedImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(selectedImageView)
         
+        postSubletButton = UIButton()
+        postSubletButton.layer.borderWidth = 2
+        postSubletButton.layer.cornerRadius = 4
+        postSubletButton.layer.borderColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0).cgColor
+        postSubletButton.layer.backgroundColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0).cgColor
+        postSubletButton.setTitle("POST SUBLET", for: UIControl.State.normal)
+        postSubletButton.addTarget(self, action: #selector(postSublet), for: .touchUpInside)
+        postSubletButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(postSubletButton)
+        
         setupConstraints()
         
     }
@@ -468,7 +480,7 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         NSLayoutConstraint.activate([
             captionTextView.topAnchor.constraint(equalTo: addCaptionLabel.bottomAnchor, constant: 12),
             captionTextView.leadingAnchor.constraint(equalTo: addCaptionLabel.leadingAnchor),
-            captionTextView.trailingAnchor.constraint(equalTo: addCaptionLabel.trailingAnchor),
+            captionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             captionTextView.heightAnchor.constraint(equalToConstant: 50)
         ])
 
@@ -486,8 +498,43 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
             selectedImageView.widthAnchor.constraint(equalToConstant: 150)
         ])
         
+        NSLayoutConstraint.activate([
+            postSubletButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            
+            postSubletButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            postSubletButton.topAnchor.constraint(equalTo: selectedImageView.bottomAnchor, constant: 12),
+            postSubletButton.heightAnchor.constraint(equalToConstant: 40),
+            postSubletButton.widthAnchor.constraint(equalToConstant: 320)
+        ])
+        
     }
-    
+    @objc func postSublet(sender: UIButton!){
+        
+        //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
+        
+        let parameters: [String: Any] = [
+            "title": aptTitleTextField.text,
+            "is_draft":false,
+            "description": captionTextView.text,
+            "rent": Int(priceTextField.text!),
+            "address": locationTextField.text
+        ]
+
+        Alamofire.request("http://35.245.152.242/api/user/2/listings/", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                
+                if let listingData = try? jsonDecoder.decode(Listing.self, from: data) {
+                    print(listingData)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+ 
+    }
     
     
     @objc func backButtonPressed(sender: UIButton!) {
