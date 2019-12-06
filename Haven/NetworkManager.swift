@@ -23,7 +23,6 @@ class NetworkManager {
                 }
                 let jsonDecoder = JSONDecoder()
                 if let listings = try? jsonDecoder.decode(Listings.self, from: data) {
-                    print("HERE HERE HERE HERE HERE")
                     var apartments : [Apartment] = []
                     for listing in listings.data {
                         apartments.append(Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address))
