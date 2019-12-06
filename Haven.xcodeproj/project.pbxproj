@@ -25,6 +25,8 @@
 		C2306FF4238774FE0094C696 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2306FF3238774FE0094C696 /* SearchTableViewCell.swift */; };
 		C286D89623909DDA00819ABD /* AddSubletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C286D89523909DDA00819ABD /* AddSubletViewController.swift */; };
 		C2DBD1FB2399740800C1CB67 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBD1FA2399740800C1CB67 /* Listing.swift */; };
+		C2DBD1FD2399BAB900C1CB67 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBD1FC2399BAB900C1CB67 /* Image.swift */; };
+		C2DBD1FF2399D3A100C1CB67 /* imageStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBD1FE2399D3A000C1CB67 /* imageStruct.swift */; };
 		D648074A011EDC33447946B9 /* Pods_Haven.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09A897AF897AE5C799B06D6 /* Pods_Haven.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		C2306FF3238774FE0094C696 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C286D89523909DDA00819ABD /* AddSubletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubletViewController.swift; sourceTree = "<group>"; };
 		C2DBD1FA2399740800C1CB67 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		C2DBD1FC2399BAB900C1CB67 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		C2DBD1FE2399D3A000C1CB67 /* imageStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				84B7FE932381FA3E000E95C3 /* LaunchScreen.storyboard */,
 				84B7FE962381FA3E000E95C3 /* Info.plist */,
 				C2DBD1FA2399740800C1CB67 /* Listing.swift */,
+				C2DBD1FC2399BAB900C1CB67 /* Image.swift */,
+				C2DBD1FE2399D3A000C1CB67 /* imageStruct.swift */,
 			);
 			path = Haven;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 			files = (
 				84CEB58B2384FAB90008C469 /* DetailViewController.swift in Sources */,
 				84F0731E23873A1400B5529B /* ApartmentCollectionViewCell.swift in Sources */,
+				C2DBD1FF2399D3A100C1CB67 /* imageStruct.swift in Sources */,
 				C2DBD1FB2399740800C1CB67 /* Listing.swift in Sources */,
 				84CC2A992383B5F5003D4DBE /* SearchView.swift in Sources */,
 				84CC2A9B2383B5FF003D4DBE /* SaveView.swift in Sources */,
@@ -268,6 +275,7 @@
 				C286D89623909DDA00819ABD /* AddSubletViewController.swift in Sources */,
 				84B1CCD1238A111B00C1B37F /* LoginView.swift in Sources */,
 				840CF4BD23977F9200817BC1 /* ViewAllController.swift in Sources */,
+				C2DBD1FD2399BAB900C1CB67 /* Image.swift in Sources */,
 				84CEB57E2384D2540008C469 /* Apartment.swift in Sources */,
 				84B7FE892381FA3B000E95C3 /* AppDelegate.swift in Sources */,
 				84CC2A9D2383B60B003D4DBE /* ProfileView.swift in Sources */,
