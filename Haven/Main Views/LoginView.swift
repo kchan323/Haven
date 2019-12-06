@@ -143,8 +143,18 @@ class LoginView: UIViewController {
     }
     
     @objc func loginButtonPressed(sender: UIButton!) {
+        guard let name = nameTextField.text else { return }
+        // to do network request
+        NetworkManager.postUser(name: name) { (users) in
+            userDefaults.set(users[0].name, forKey: "name")
+            userDefaults.set(users[0].userId, forKey: "userId")
+            self.loginSegue()
+        }
+    }
+    
+    func loginSegue () {
         let viewController = CustomTabBarController()
-        navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     /*

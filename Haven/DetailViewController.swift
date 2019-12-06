@@ -108,7 +108,7 @@ class DetailViewController: UIViewController {
         view.addSubview(priceView)
         
         priceLabel = UILabel()
-        priceLabel.text = "$" + String(apartment.price)
+        priceLabel.text = "$" + String(apartment.rent)
         priceLabel.textColor = .white
         priceLabel.textAlignment = .right
         priceLabel.font = UIFont.systemFont(ofSize: 24)

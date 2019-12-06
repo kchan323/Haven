@@ -26,7 +26,6 @@ struct Listing: Codable {
     var data: ListingDataResponse
 }
 
-
 //{
 //  "success": True,
 //  "data": {
@@ -53,4 +52,8 @@ struct ListingDataResponse: Codable {
     var address: String
     var images: [String]
    
+}
+
+struct ListingResponse: Codable {
+    var data: [ListingDataResponse]
 }

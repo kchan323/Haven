@@ -7,5 +7,6 @@ target 'Haven' do
 
   # Pods for Haven
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 
 end

@@ -96,7 +96,7 @@ class SearchTableViewCell: UITableViewCell {
         aptImageView.image = UIImage(named: search.image)
         addressLabel.text = search.address
         titleLabel.text = search.title
-        priceLabel.text = "$" + String(search.price)
+        priceLabel.text = "$" + String(search.rent)
     }
     
     required init?(coder: NSCoder) {

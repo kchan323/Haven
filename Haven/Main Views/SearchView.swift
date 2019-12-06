@@ -18,8 +18,8 @@ class SearchView: UIViewController {
     var tableView: UITableView!
     let reuseIdentifier = "searchCellReuse"
     let cellHeight: CGFloat = 70
-    var Searches: [Apartment]!
-    var filteredSearches: [Apartment]!
+    var Searches: [Apartment] = []
+    var filteredSearches: [Apartment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +40,8 @@ class SearchView: UIViewController {
         view.addSubview(titleLabel)
         view.bringSubviewToFront(titleLabel)
         
-        let search1 = Apartment(image: "onebedroom", title: "1-Bedroom (Spring 2020)", description: "", price: 1085, address: "319 College Ave", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let search2 = Apartment(image: "largesingle", title: "Large Single in Collegetown", description: "", price: 1100, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        Searches = [search1, search2]
-        filteredSearches = Searches
+//        let search1 = Apartment(image: "onebedroom", title: "1-Bedroom (Spring 2020)", description: "", rent: 1085, address: "319 College Ave", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+//        let search2 = Apartment(image: "largesingle", title: "Large Single in Collegetown", description: "", rent: 1100, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         
         searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.prominent
@@ -69,6 +67,7 @@ class SearchView: UIViewController {
         view.addSubview(tableView)
             
         setupConstraints()
+        getAllListings()
     }
     
     func setupConstraints() {
@@ -100,6 +99,14 @@ class SearchView: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
+    }
+    
+    func getAllListings () {
+        NetworkManager.getAllListings { (apartments: [Apartment]) in
+            self.Searches = apartments
+            self.filteredSearches = apartments
+            self.tableView.reloadData()
+        }
     }
 }
 

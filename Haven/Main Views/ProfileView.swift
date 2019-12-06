@@ -52,10 +52,10 @@ class ProfileView: UIViewController {
         lineView1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView1)
         
-        let draft1 = Apartment(image: "apartment", title: "2-Bedroom (Spring 2020)", description: "All new, fully furnished apartment. 5 min walk to the engineering quad.", price: 1085, address: "3002 College Ave", type: "Apartment", electricity: true, wifi: false, water: true, trash: false, heat: true)
-        let draft2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft4 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let draft1 = Apartment(image: "apartment", title: "2-Bedroom (Spring 2020)", description: "All new, fully furnished apartment. 5 min walk to the engineering quad.", rent: 1085, address: "3002 College Ave", type: "Apartment", electricity: true, wifi: false, water: true, trash: false, heat: true)
+        let draft2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let draft3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let draft4 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         Drafts = [draft1, draft2, draft3, draft4]
         
         tableView1 = UITableView()
@@ -85,9 +85,9 @@ class ProfileView: UIViewController {
         lineView2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView2)
         
-        let listing1 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", price: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let listing1 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let listing2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        let listing3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         Listings = [listing1, listing2, listing3]
         
         tableView2 = UITableView()

@@ -5,9 +5,7 @@
 //  Created by Anika Talwar on 12/5/19.
 //  Copyright © 2019 Katelin Chan. All rights reserved.
 //
-
 import Foundation
-
 
 struct ImageStruct: Codable {
     var success: Bool

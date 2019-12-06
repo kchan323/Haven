@@ -7,6 +7,10 @@
 //
 
 import UIKit
+let userDefaults = UserDefaults.standard
+let encoder = JSONEncoder()
+let decoder = JSONDecoder()
+var user: User!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,15 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-//        var nav = window?.rootViewController as? UINavigationController
-//        nav = UINavigationController.init(rootViewController: CustomTabBarController())
-//        nav!.isNavigationBarHidden = true
-//        window?.rootViewController = nav
+//        window?.rootViewController = UINavigationController(rootViewController: LoginView())
+//        window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: LoginView())
-//        window?.rootViewController = CustomTabBarController()
+//        if let userId = userDefaults.value(forKey: "userId") as? Int,
+//            let name = userDefaults.value(forKey: "name") as? String {
+//            user.userId = userId
+//            user.name = name
+//            var nav = window?.rootViewController as? UINavigationController
+//            nav = UINavigationController.init(rootViewController: CustomTabBarController())
+//            nav!.isNavigationBarHidden = true
+//            window?.rootViewController = nav
+//        } else {
+//            window?.rootViewController = UINavigationController(rootViewController: LoginView())
+//        }
+        
+        var nav = window?.rootViewController as? UINavigationController
+        nav = UINavigationController.init(rootViewController: CustomTabBarController())
+        nav!.isNavigationBarHidden = true
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

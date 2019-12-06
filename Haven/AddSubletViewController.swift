@@ -508,12 +508,26 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         ])
         
     }
-    @objc func postSublet(sender: UIButton!){
+    
+    @objc func postSublet(sender: UIButton!) {
         
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         let img = selectedImageView.image!.pngData()! as NSData
         
-        
+//        let parameters: [String: Any] = [
+//            "title": aptTitleTextField.text,
+//            "is_draft":false,
+//            "description": captionTextView.text,
+//            "rent": Int(priceTextField.text!),
+//            "address": locationTextField.text
+//        ]
+
+//        if let rentString = priceTextField.text, let rent = Int(rentString),
+//            let title = aptTitleLabel.text,
+//            let description = captionTextView.text,
+//            let address = locationTextField.text {
+//            let apartment = Apartment(title: title, description: description, rent: rent, address: address)
+//            NetworkManager.postSublet(apartment: apartment)
         
         let parameters1: [String: Any] = [
             "title": aptTitleTextField.text,
@@ -526,9 +540,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         let parameters2: [String: Any] = [
             "image": Image.encodeImage(imageData: img)
         ]
-        
-        
-       
         
         Alamofire.request("http://35.245.152.242/api/user/2/listings/", method: .post, parameters: parameters1, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
@@ -559,10 +570,8 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
                 print(error.localizedDescription)
             }
         }
- 
     }
-    
-    
+
     @objc func backButtonPressed(sender: UIButton!) {
         navigationController?.popViewController(animated: true)
     }
