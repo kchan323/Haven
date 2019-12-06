@@ -22,7 +22,7 @@ class NetworkManager {
                     print(json)
                 }
                 let jsonDecoder = JSONDecoder()
-                if let listings = try? jsonDecoder.decode(Listings.self, from: data) {
+                if let listings = try? jsonDecoder.decode(ListingsResponse.self, from: data) {
                     var apartments : [Apartment] = []
                     for listing in listings.data {
                         apartments.append(Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address))
@@ -71,7 +71,7 @@ class NetworkManager {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
                 
-                if let listingData = try? jsonDecoder.decode(Listing.self, from: data) {
+                if let listingData = try? jsonDecoder.decode(ListingResponse.self, from: data) {
                     print(listingData)
                 }
                 

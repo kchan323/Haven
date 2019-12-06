@@ -21,17 +21,17 @@ import Foundation
 //  "collections": [ <COLLECTIONS> ]
 //}
 
+struct ListingResponse: Codable {
+    var success: Bool
+    var data: Listing
+}
+
+struct ListingsResponse: Codable {
+    var success: Bool
+    var data: [Listing]
+}
+
 struct Listing: Codable {
-    var success: Bool
-    var data: ListingDataResponse
-}
-
-struct Listings: Codable {
-    var success: Bool
-    var data: [ListingDataResponse]
-}
-
-struct ListingDataResponse: Codable {
     var id: Int
     var user_id: Int
     var title: String
