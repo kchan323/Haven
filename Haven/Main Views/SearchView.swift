@@ -21,7 +21,7 @@ class SearchView: UIViewController {
     let cellHeight: CGFloat = 70
     var Searches: [Apartment] = []
     var filteredSearches: [Apartment] = []
-
+    
     override func viewDidAppear(_ animated: Bool) {
         self.getAllListings()
     }
