@@ -145,9 +145,9 @@ class LoginView: UIViewController {
     @objc func loginButtonPressed(sender: UIButton!) {
         guard let name = nameTextField.text else { return }
         // to do network request
-        NetworkManager.postUser(name: name) { (users) in
-            userDefaults.set(users[0].name, forKey: "name")
-            userDefaults.set(users[0].userId, forKey: "userId")
+        NetworkManager.postUser(name: name) { user in
+            userDefaults.set(user.name, forKey: "name")
+            userDefaults.set(user.id, forKey: "userId")
             self.loginSegue()
         }
     }

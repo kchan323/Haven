@@ -21,28 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = UINavigationController(rootViewController: LoginView())
-//        window?.makeKeyAndVisible()
-        
-//        if let userId = userDefaults.value(forKey: "userId") as? Int,
-//            let name = userDefaults.value(forKey: "name") as? String {
-//            user.userId = userId
-//            user.name = name
-//            var nav = window?.rootViewController as? UINavigationController
-//            nav = UINavigationController.init(rootViewController: CustomTabBarController())
-//            nav!.isNavigationBarHidden = true
-//            window?.rootViewController = nav
-//        } else {
-//            window?.rootViewController = UINavigationController(rootViewController: LoginView())
-//        }
-        
-        var nav = window?.rootViewController as? UINavigationController
-        nav = UINavigationController.init(rootViewController: CustomTabBarController())
-        nav!.isNavigationBarHidden = true
-        window?.rootViewController = nav
         window?.makeKeyAndVisible()
+
+        if let userId = userDefaults.value(forKey: "userId") as? Int,
+            let name = userDefaults.value(forKey: "name") as? String {
+            user = User(id: userId, name: name)
+            var nav = window?.rootViewController as? UINavigationController
+            nav = UINavigationController.init(rootViewController: CustomTabBarController())
+            nav!.isNavigationBarHidden = true
+            window?.rootViewController = nav
+        } else {
+            window?.rootViewController = UINavigationController(rootViewController: LoginView())
+        }
         return true
-        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

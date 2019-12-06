@@ -40,9 +40,6 @@ class SearchView: UIViewController {
         view.addSubview(titleLabel)
         view.bringSubviewToFront(titleLabel)
         
-//        let search1 = Apartment(image: "onebedroom", title: "1-Bedroom (Spring 2020)", description: "", rent: 1085, address: "319 College Ave", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-//        let search2 = Apartment(image: "largesingle", title: "Large Single in Collegetown", description: "", rent: 1100, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        
         searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.prominent
         searchBar.setImage(UIImage(), for: .search, state: .normal)
@@ -102,7 +99,7 @@ class SearchView: UIViewController {
     }
     
     func getAllListings () {
-        NetworkManager.getAllListings { (apartments: [Apartment]) in
+        NetworkManager.getAllListings { apartments in
             self.Searches = apartments
             self.filteredSearches = apartments
             self.tableView.reloadData()

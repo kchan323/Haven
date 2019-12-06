@@ -8,10 +8,10 @@
 import Foundation
 
 struct User : Codable {
-    var userId: Int
+    var id: Int
     var name: String
 }
 
 struct UserResponse: Codable {
-    var data: [User]
+    var data: User
 }

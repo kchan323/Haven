@@ -15,33 +15,32 @@ class NetworkManager {
     
     static func getAllListings (_ didGetListings: @escaping ([Apartment]) -> Void) {
         let url = baseUrl + "api/listings/"
-        Alamofire.request(url, method: .get).validate().responseData { (response) in
+        Alamofire.request(url, method: .get).validate().responseData { response in
         switch response.result {
             case .success(let data):
                 if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     print(json)
                 }
                 let jsonDecoder = JSONDecoder()
-                if let listings = try? jsonDecoder.decode(ListingResponse.self, from: data) {
+                if let listings = try? jsonDecoder.decode(Listings.self, from: data) {
+                    print("HERE HERE HERE HERE HERE")
                     var apartments : [Apartment] = []
                     for listing in listings.data {
                         apartments.append(Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address))
                     }
                     didGetListings(apartments)
                 }
-                       
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    static func postUser (name: String, _ didGetUser: @escaping ([User]) -> Void) {
+    static func postUser (name: String, _ didGetUser: @escaping (User) -> Void) {
         let url = baseUrl + "api/users/"
         let parameters: [String: Any] = [
             "name": name
         ]
-
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
             switch response.result {
             case .success(let data):
@@ -52,7 +51,6 @@ class NetworkManager {
                 if let decodedUser = try? jsonDecoder.decode(UserResponse.self, from: data) {
                     didGetUser(decodedUser.data)
                 }
-                       
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -60,7 +58,7 @@ class NetworkManager {
     }
     
     static func postSublet (apartment: Apartment) {
-        let url = baseUrl + "api/user/" + String (user.userId) + "/listings/"
+        let url = baseUrl + "api/user/" + String (user.id) + "/listings/"
         let parameters: [String: Any] = [
             "title": apartment.title,
             "is_draft": false, //apartment.is_draft
