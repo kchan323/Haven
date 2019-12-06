@@ -511,65 +511,23 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     
     @objc func postSublet(sender: UIButton!) {
         
-        //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-        let img = selectedImageView.image!.pngData()! as NSData
-        
-//        let parameters: [String: Any] = [
-//            "title": aptTitleTextField.text,
-//            "is_draft":false,
-//            "description": captionTextView.text,
-//            "rent": Int(priceTextField.text!),
-//            "address": locationTextField.text
-//        ]
-
-//        if let rentString = priceTextField.text, let rent = Int(rentString),
-//            let title = aptTitleLabel.text,
-//            let description = captionTextView.text,
-//            let address = locationTextField.text {
-//            let apartment = Apartment(title: title, description: description, rent: rent, address: address)
-//            NetworkManager.postSublet(apartment: apartment)
-        
-        let parameters1: [String: Any] = [
-            "title": aptTitleTextField.text,
-            "is_draft":false,
-            "description": captionTextView.text,
-            "rent": Int(priceTextField.text!),
-            "address": locationTextField.text,
-        ]
-        
-        let parameters2: [String: Any] = [
-            "image": Image.encodeImage(imageData: img)
-        ]
-        
-        Alamofire.request("http://35.245.152.242/api/user/2/listings/", method: .post, parameters: parameters1, encoding: JSONEncoding.default).validate().responseData { response in
-            switch response.result {
-            case .success(let data):
-                let jsonDecoder = JSONDecoder()
-                
-                if let listingData = try? jsonDecoder.decode(Listing.self, from: data) {
-                    print("first request")
-                    print(listingData)
-                    Alamofire.request("http://35.245.152.242/api/listing/1/images/", method: .post, parameters: parameters2, encoding: JSONEncoding.default).validate().responseData { response in
-                               switch response.result {
-                               case .success(let data):
-                                   let jsonDecoder = JSONDecoder()
-                                   
-                                   if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
-                                    print("inside second request")
-                                    print(imgData.data.id)
-                                    
-                                   }
-                                   
-                               case .failure(let error):
-                                   print(error.localizedDescription)
-                               }
-                           }
-                }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
+        if let img = selectedImageView.image?.pngData() as NSData?,
+            let title = aptTitleTextField.text,
+            let description = captionTextView.text,
+            let address = locationTextField.text,
+            let rentString = priceTextField.text,
+            let rent = Int(rentString) {
+            if let _ = Int(title), let _ = Int(description), let _ = Int(address) {
+                return
+            } else {
+                let apartment = Apartment(title: title, description: description, rent: rent, address: address, is_draft: false)
+                apartment.image = Image.encodeImage(imageData: img)
+                NetworkManager.postSublet(apartment: apartment)
             }
         }
+        
+        
+        
     }
 
     @objc func backButtonPressed(sender: UIButton!) {

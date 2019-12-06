@@ -13,6 +13,7 @@ class Apartment {
     var description: String
     var rent: Int
     var address: String
+    var is_draft: Bool
 //    var type: String //apartment or house
     var electricity: Bool
     var wifi: Bool
@@ -20,12 +21,13 @@ class Apartment {
     var trash: Bool
     var heat: Bool
     
-    init(image: String, title: String, description: String, rent: Int, address: String, type: String, electricity: Bool, wifi: Bool, water: Bool, trash: Bool, heat: Bool) {
+    init(image: String, title: String, description: String, rent: Int, address: String, is_draft: Bool, type: String, electricity: Bool, wifi: Bool, water: Bool, trash: Bool, heat: Bool) {
         self.image = image
         self.title = title
         self.description = description
         self.rent = rent
         self.address = address
+        self.is_draft = is_draft
 //        self.type = type //apartment or house
         self.electricity = electricity
         self.wifi = wifi
@@ -34,11 +36,12 @@ class Apartment {
         self.heat = heat
     }
     
-    init(title: String, description: String, rent: Int, address: String) {
+    init(title: String, description: String, rent: Int, address: String, is_draft: Bool) {
         self.title = title
         self.description = description
         self.rent = rent
         self.address = address
+        self.is_draft = is_draft
         
         self.image = ""
         self.electricity = false

@@ -13,6 +13,54 @@ import SwiftyJSON
 class NetworkManager {
     static let baseUrl = "http://35.245.152.242/"
     
+    static func getMyListings (is_draft: Bool, _ didGetListings: @escaping ([Apartment]) -> Void) {
+        let url = baseUrl + "api/user/" + String(user.id) + "/listings/"
+        
+        Alamofire.request(url, method: .get).validate().responseData { response in
+        switch response.result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                    print(json)
+                }
+                let jsonDecoder = JSONDecoder()
+                if let listings = try? jsonDecoder.decode(ListingsResponse.self, from: data) {
+                    var apartments : [Apartment] = []
+                    for listing in listings.data {
+                        if (listing.is_draft == is_draft) {
+                            let apartment = Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
+                            self.getImage(listingId: listing.id, { image in
+                                apartment.image = image
+                            })
+                            apartments.append(apartment)
+                        }
+                    }
+                    didGetListings(apartments)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func getImage (listingId: Int, _ didGetImage: @escaping (String) -> Void) {
+        let url = baseUrl + "api/listing/" +  String(listingId) + "/images/"
+       
+        Alamofire.request(url, method: .get).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                                   
+                if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
+                    didGetImage(imgData.data.image)
+                }
+                                   
+            case .failure(let error):
+                print(error.localizedDescription)
+            
+            }
+        }
+    }
+    
     static func getAllListings (_ didGetListings: @escaping ([Apartment]) -> Void) {
         let url = baseUrl + "api/listings/"
         Alamofire.request(url, method: .get).validate().responseData { response in
@@ -25,7 +73,11 @@ class NetworkManager {
                 if let listings = try? jsonDecoder.decode(ListingsResponse.self, from: data) {
                     var apartments : [Apartment] = []
                     for listing in listings.data {
-                        apartments.append(Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address))
+                        let apartment = Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
+                        self.getImage(listingId: listing.id, { image in
+                            apartment.image = image
+                        })
+                        apartments.append(apartment)
                     }
                     didGetListings(apartments)
                 }
@@ -60,7 +112,7 @@ class NetworkManager {
         let url = baseUrl + "api/user/" + String (user.id) + "/listings/"
         let parameters: [String: Any] = [
             "title": apartment.title,
-            "is_draft": false, //apartment.is_draft
+            "is_draft": apartment.is_draft,
             "description": apartment.description,
             "rent": apartment.rent,
             "address": apartment.address
@@ -72,6 +124,7 @@ class NetworkManager {
                 let jsonDecoder = JSONDecoder()
                 
                 if let listingData = try? jsonDecoder.decode(ListingResponse.self, from: data) {
+                    self.postImage(image: apartment.image, listingId: listingData.data.id)
                     print(listingData)
                 }
                 
@@ -81,4 +134,27 @@ class NetworkManager {
         }
     }
     
+    static func postImage (image: String, listingId: Int) {
+        let url = baseUrl + "api/listing/" +  String(listingId) + "/images/"
+
+        let parameters: [String: Any] = [
+            "image": image
+        ]
+       
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                                   
+                if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
+                    print("inside second request")
+                    print(imgData.data.id)
+                }
+                                   
+            case .failure(let error):
+                print(error.localizedDescription)
+            
+            }
+        }
+    }
 }

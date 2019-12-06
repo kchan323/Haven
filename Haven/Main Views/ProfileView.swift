@@ -16,14 +16,14 @@ class ProfileView: UIViewController {
     var tableView1: UITableView!
     let reuseIdentifier1 = "DraftCellReuse"
     let cellHeight: CGFloat = 70
-    var Drafts: [Apartment]!
+    var drafts: [Apartment] = []
     
     var headerLabel2: UILabel!
     var lineView2: UIView!
     
     var tableView2: UITableView!
     let reuseIdentifier2 = "ListingCellReuse"
-    var Listings: [Apartment]!
+    var listings: [Apartment] = []
     
     var addButton: UIButton!
     var lineView3: UIView!
@@ -52,12 +52,6 @@ class ProfileView: UIViewController {
         lineView1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView1)
         
-        let draft1 = Apartment(image: "apartment", title: "2-Bedroom (Spring 2020)", description: "All new, fully furnished apartment. 5 min walk to the engineering quad.", rent: 1085, address: "3002 College Ave", type: "Apartment", electricity: true, wifi: false, water: true, trash: false, heat: true)
-        let draft2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let draft4 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        Drafts = [draft1, draft2, draft3, draft4]
-        
         tableView1 = UITableView()
         tableView1.dataSource = self
         tableView1.delegate = self
@@ -84,11 +78,6 @@ class ProfileView: UIViewController {
         lineView2.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 211.0 / 255.0, alpha: 1.0)
         lineView2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView2)
-        
-        let listing1 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing2 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        let listing3 = Apartment(image: "apartment", title: "Large Single in Collegtown", description: "", rent: 0, address: "720 Dryden Rd", type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        Listings = [listing1, listing2, listing3]
         
         tableView2 = UITableView()
         tableView2.dataSource = self
@@ -121,6 +110,9 @@ class ProfileView: UIViewController {
         view.addSubview(lineView3)
                 
         setupConstraints()
+        
+        getMyDrafts()
+        getMyListings()
     }
     
     func setupConstraints() {
@@ -193,30 +185,44 @@ class ProfileView: UIViewController {
         let viewController = AddSubletViewController()
         navigationController!.pushViewController(viewController, animated: true)
     }
+    
+    func getMyDrafts () {
+        NetworkManager.getMyListings(is_draft: true) { (drafts) in
+            self.drafts = drafts
+            self.tableView1.reloadData()
+        }
+    }
+    
+    func getMyListings () {
+        NetworkManager.getMyListings(is_draft: false) { (listings) in
+            self.listings = listings
+            self.tableView2.reloadData()
+        }
+    }
 }
 
 extension ProfileView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.tableView1) {
-            return Drafts.count
+            return drafts.count
         }
         else {
-            return Listings.count
+            return listings.count
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == self.tableView1) {
             let draft_cell = tableView1.dequeueReusableCell(withIdentifier: reuseIdentifier1, for: indexPath) as! DraftTableViewCell
-            let Draft = Drafts[indexPath.row]
-            draft_cell.configure(for: Draft)
+            let draft = drafts[indexPath.row]
+            draft_cell.configure(for: draft)
             draft_cell.selectionStyle = .none
             return draft_cell
         }
         else {
             let listing_cell = tableView2.dequeueReusableCell(withIdentifier: reuseIdentifier2, for: indexPath) as! ListingTableViewCell
-            let Listing = Listings[indexPath.row]
-            listing_cell.configure(for: Listing)
+            let listing = listings[indexPath.row]
+            listing_cell.configure(for: listing)
             listing_cell.selectionStyle = .none
             return listing_cell
         }
@@ -230,14 +236,14 @@ extension ProfileView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(tableView == self.tableView1) {
-            let Apartment = Drafts[indexPath.row]
-            let viewController = DetailViewController(apartment: Apartment)
+            let apartment = drafts[indexPath.row]
+            let viewController = DetailViewController(apartment: apartment)
 //            viewController.delegate = self
             navigationController!.pushViewController(viewController, animated: true)
         }
         else {
-            let Apartment = Listings[indexPath.row]
-            let viewController = DetailViewController(apartment: Apartment)
+            let apartment = listings[indexPath.row]
+            let viewController = DetailViewController(apartment: apartment)
 //            viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
         }
