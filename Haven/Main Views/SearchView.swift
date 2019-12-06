@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class SearchView: UIViewController {
     
@@ -67,8 +68,8 @@ class SearchView: UIViewController {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
             
-        setupConstraints()
         getAllListings()
+        setupConstraints()
     }
     
     func setupConstraints() {
@@ -103,11 +104,19 @@ class SearchView: UIViewController {
     }
     
     func getAllListings () {
-        NetworkManager.getAllListings { apartments in
-            self.Searches = apartments
-            self.filteredSearches = apartments
-            self.tableView.reloadData()
+        
+        if let navController = self.navigationController {
+            MBProgressHUD.showAdded(to: navController.view, animated: true)
+            self.tableView.isHidden = true
+            NetworkManager.getAllListings { apartments in
+                self.Searches = apartments
+                self.filteredSearches = apartments
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+                MBProgressHUD.hide(for: navController.view, animated: true)
+            }
         }
+
     }
 }
 

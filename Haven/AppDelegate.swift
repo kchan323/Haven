@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let name = userDefaults.value(forKey: "name") as? String {
             user = User(id: userId, name: name)
             var nav = window?.rootViewController as? UINavigationController
-            nav = UINavigationController.init(rootViewController: CustomTabBarController())
+            nav = UINavigationController(rootViewController: CustomTabBarController())
             nav!.isNavigationBarHidden = true
             window?.rootViewController = nav
         } else {
