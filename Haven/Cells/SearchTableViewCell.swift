@@ -93,7 +93,7 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     func configure(for search: Apartment) {
-        aptImageView.image = UIImage(named: search.image)
+        aptImageView.image = Image.decodeImage(strBase64: search.image)
         addressLabel.text = search.address
         titleLabel.text = search.title
         priceLabel.text = "$" + String(search.rent)

@@ -9,7 +9,7 @@ import Foundation
 
 struct ImageStruct: Codable {
     var success: Bool
-    var data: ImageDataResponse
+    var data: [ImageDataResponse]
 }
 
 struct ImageDataResponse: Codable {

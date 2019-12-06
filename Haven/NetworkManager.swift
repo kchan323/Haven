@@ -51,7 +51,11 @@ class NetworkManager {
                 let jsonDecoder = JSONDecoder()
                                    
                 if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
-                    didGetImage(imgData.data.image)
+                    if imgData.data.count > 0 {
+                        didGetImage(imgData.data[0].image)
+                    } else {
+                        didGetImage("")
+                    }
                 }
                                    
             case .failure(let error):
@@ -145,12 +149,9 @@ class NetworkManager {
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                                   
                 if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
-                    print("inside second request")
-                    print(imgData.data.id)
+                    print(imgData.data)
                 }
-                                   
             case .failure(let error):
                 print(error.localizedDescription)
             

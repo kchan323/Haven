@@ -28,6 +28,11 @@ class ProfileView: UIViewController {
     var addButton: UIButton!
     var lineView3: UIView!
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.getMyDrafts()
+        self.getMyListings()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true

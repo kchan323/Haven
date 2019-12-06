@@ -23,13 +23,17 @@ class Image {
     static func encodeImage(imageData: NSData) -> String {
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
         return strBase64
-
     }
 
-    static func decodeImage(strBase64: String) -> UIImage{
-        let dataDecoded:NSData = NSData(base64Encoded: strBase64, options: NSData.Base64DecodingOptions(rawValue: 0))!
-        let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-        return decodedimage
+    static func decodeImage(strBase64: String) -> UIImage {
+        print(strBase64)
+        if let dataDecoded = NSData(base64Encoded: strBase64, options: NSData.Base64DecodingOptions(rawValue: 0)),
+            let decodedimage = UIImage(data: dataDecoded as Data) {
+            return decodedimage
+        } else {
+            return UIImage(named: "apartment") ?? UIImage()
+        }
+
     }
 
 }
