@@ -525,9 +525,8 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
                 NetworkManager.postSublet(apartment: apartment)
             }
         }
-        
-        
-        
+        navigationController?.popViewController(animated: true)
+    
     }
 
     @objc func backButtonPressed(sender: UIButton!) {
