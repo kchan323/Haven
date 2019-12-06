@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "save.png",
+      "filename" : "checkmark: teal.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "save2x.png",
+      "filename" : "checkmark: teal@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon: save (white)@3x.png",
+      "filename" : "checkmark: teal@3x.png",
       "scale" : "3x"
     }
   ],
