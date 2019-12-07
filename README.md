@@ -9,6 +9,7 @@ Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack T
 
 **Search and DetailView Screens**
 <p float="left">
+  <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/SearchLoad.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Searches.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Search1.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Search2.png" width = '200'/>
