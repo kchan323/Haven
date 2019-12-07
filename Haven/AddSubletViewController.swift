@@ -509,6 +509,26 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
+    @objc func postDraft() {
+        
+        if let img = selectedImageView.image?.pngData() as NSData?,
+            let title = aptTitleTextField.text,
+            let description = captionTextView.text,
+            let address = locationTextField.text,
+            let rentString = priceTextField.text,
+            let rent = Int(rentString) {
+            if let _ = Int(title), let _ = Int(description), let _ = Int(address) {
+                return
+            } else {
+                let apartment = Apartment(title: title, description: description, rent: rent, address: address, is_draft: true)
+                apartment.image = Image.encodeImage(imageData: img)
+                NetworkManager.postSublet(apartment: apartment)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    
+    }
+    
     @objc func postSublet(sender: UIButton!) {
         
         if let img = selectedImageView.image?.pngData() as NSData?,
@@ -530,6 +550,7 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     }
 
     @objc func backButtonPressed(sender: UIButton!) {
+        self.postDraft()
         navigationController?.popViewController(animated: true)
     }
     
