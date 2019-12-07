@@ -14,7 +14,7 @@ class ViewAllController: UIViewController {
     var titleLabel: UILabel!
     
     var tableView: UITableView!
-    let reuseIdentifier = "searchCellReuse"
+    let reuseIdentifier = "viewAllCellReuse"
     let cellHeight: CGFloat = 70
     var Searches: [Apartment]!
     var filteredSearches: [Apartment]!
@@ -37,7 +37,6 @@ class ViewAllController: UIViewController {
 //        self.hideKeyboardWhenTappedAround()
         
         backButton = UIButton()
-//        frame: CGRect(x: -15, y: 50, width: 100, height: 50))
         backButton.setImage(UIImage (named: "caret_green"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +55,7 @@ class ViewAllController: UIViewController {
         tableView.backgroundColor = .white
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ViewAllTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
                 
         setupConstraints()
@@ -100,7 +99,7 @@ extension ViewAllController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let search_cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchTableViewCell
+        let search_cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ViewAllTableViewCell
         let Search = collection.apartments[indexPath.section]
         search_cell.configure(for: Search)
         search_cell.selectionStyle = .none

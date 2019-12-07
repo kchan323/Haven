@@ -79,18 +79,18 @@ class SaveView: UIViewController {
         lineView1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView1)
         
-        apartment1 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment2 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment3 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment4 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment5 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment1 = Apartment(image: "dorm", title: "Single Bedroom", description: "Beautiful single located on north campus.", rent: 1036, address: "21 Northcross Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment2 = Apartment(image: "dorm2", title: "Double Bedroom", description: "Double in Mews Hall with air conditioning.", rent: 915, address: "172 Cradit Farm Dr", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment3 = Apartment(image: "dorm3", title: "Triple Bedroom", description: "Triple in High Rise 5.", rent: 842, address: "6 Jessup Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment4 = Apartment(image: "dorm5", title: "Single Bedroom", description: "Single in a quiet hall.", rent: 1036, address: "21 Northcross Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment5 = Apartment(image: "dorm4", title: "Double Bedroom", description: "Large double on north campus.", rent: 915, address: "600 Thurston Ave", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         apartments1 = [apartment1, apartment2, apartment3, apartment4, apartment5]
         
         let layout1 = UICollectionViewFlowLayout()
         layout1.scrollDirection = .horizontal
         layout1.minimumLineSpacing = padding
         layout1.minimumInteritemSpacing = padding
-                
+        
         collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout1)
         collectionView1.translatesAutoresizingMaskIntoConstraints = false
         collectionView1.backgroundColor = .white
@@ -122,11 +122,11 @@ class SaveView: UIViewController {
         lineView2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView2)
         
-        apartment6 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment7 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment8 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment9 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
-        apartment10 = Apartment(image: "dorm", title: "Single Bedroom", description: "", rent: 950, address: "720 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment6 = Apartment(image: "apartment1", title: "Large Single", description: "Huge apartment for sublet!", rent: 950, address: "301 College Ave", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment7 = Apartment(image: "apartment2", title: "Spacious Bedroom", description: "Big bedroom in gorgeous apartment.", rent: 1125, address: "110 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment8 = Apartment(image: "apartment3", title: "Medium Single", description: "Cozy apartment for sublet.", rent: 1075, address: "312 College Ave", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment9 = Apartment(image: "apartment4", title: "Sunny Bedroom", description: "Looking for another roommate.", rent: 1010, address: "208 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
+        apartment10 = Apartment(image: "apartment5", title: "Single Bedroom", description: "Large room with all utilities included.", rent: 1005, address: "111 Dryden Rd", is_draft: false, type: "Apartment", electricity: false, wifi: false, water: false, trash: false, heat: false)
         apartments2 = [apartment6, apartment7, apartment8, apartment9, apartment10]
         
         let layout2 = UICollectionViewFlowLayout()
