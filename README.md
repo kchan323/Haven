@@ -32,10 +32,16 @@ Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack T
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/DetailProfile.png" width = '200'/>
 </p>
 
-**AddSublet and ChooseImage Screens**
+**AddSublet Screen**
 <p float="left">
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Post1.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Post2.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Post3.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Post4.png" width = '200'/>
+</p>
+
+**ChooseImage Screen**
+<p float="left">
+  <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Photo1.png" width = '200'/>
+  <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Photo2.png" width = '200'/>
 </p>
