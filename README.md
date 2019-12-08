@@ -56,4 +56,19 @@ Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack T
 - **API:** Users API (http://35.245.152.242/api/users/) and Listings API (http://35.245.152.242/api/listings/), created by Yanlam Ko and Jack Thompson (backend)
 
 ### Backend
-- Yanlam and Jack please fill out 
+&#10141; [SQLAlchemy](https://www.sqlalchemy.org/) - The ORM used
+
+&#10141; [Flask](http://flask.pocoo.org/) - Web framework
+
+&#10141; [Docker](https://www.docker.com/) - Containerization
+
+&#10141; [Google Cloud](https://cloud.google.com/) - Server hosting
+
+#### Authors:
+&#10141; [Yanlam Ko](https://github.com/YKo20010)
+
+&#10141; [Jack Thompson](https://github.com/jackthmp)
+
+&#10141; [Katelin Chan](https://github.com/kchan323)
+
+&#10141; [Anika Talwar](https://github.com/atalwar98)
