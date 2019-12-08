@@ -47,3 +47,13 @@ Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack T
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Photo1.png" width = '200'/>
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Photo2.png" width = '200'/>
 </p>
+
+### iOS
+- **NSLayoutConstraint:** used to place views as per the design and fit multiple screen dimensions.
+- **UITableView:** implemented in SearchView, ProfileView, and ViewAllController to display drafts and listings with images, addresses, titles, and prices.
+- **UICollectionView:** implemented in SaveView to display listings with images, prices, and titles.
+- **UITabBarController:** displayed at bottom of main ViewControllers with icons for each screen, and ability to navigate between screens. User is brought to their desired page upon click of an icon.
+- **API:** Users API (http://35.245.152.242/api/users/) and Listings API (http://35.245.152.242/api/listings/), created by Yanlam Ko and Jack Thompson (backend)
+
+### Backend
+- Yanlam and Jack please fill out 
