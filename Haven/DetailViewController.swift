@@ -53,6 +53,8 @@ class DetailViewController: UIViewController {
         
         apartmentImageView = UIImageView()
         apartmentImageView.image = apartment.imageReceived
+
+        
         apartmentImageView.contentMode = .scaleAspectFit
         apartmentImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(apartmentImageView)

@@ -521,6 +521,7 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
                 let apartment = Apartment(title: title, description: description, rent: rent, address: address, is_draft: true)
                 apartment.image = Image.encodeImage(imageData: img)
                 apartment.imageReceived = selectedImageView.image!
+                apartment.posted = true
                 NetworkManager.postSublet(apartment: apartment)
             }
         }
