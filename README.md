@@ -9,9 +9,6 @@ The user enters their name on the login screen and presses continue, after which
 
 For best visual results, run with an iPhone 11 (or better) simulator.
 
-See backend repo [here](https://github.com/YKo20010/haven).
-See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-WIP--Ap~_M5FNn_hdIArbDOHjuTmJAQ-bpk7vUlUZVoWzgrtHKBlf).
-
 **Login Screen**
 <p float="left">
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Login1.png" width = '200'/>
@@ -74,6 +71,9 @@ See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-
 &#10141; [Docker](https://www.docker.com/) - Containerization
 
 &#10141; [Google Cloud](https://cloud.google.com/) - Server hosting
+
+See backend repo [here](https://github.com/YKo20010/haven).
+See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-WIP--Ap~_M5FNn_hdIArbDOHjuTmJAQ-bpk7vUlUZVoWzgrtHKBlf).
 
 #### Authors:
 &#10141; [Katelin Chan](https://github.com/kchan323)
