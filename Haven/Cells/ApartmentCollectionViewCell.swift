@@ -78,7 +78,8 @@ class ApartmentCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(for apartment: Apartment) {
-        photoImageView.image = UIImage(named: apartment.image)
+        apartment.imageReceived = UIImage(named: apartment.image)!
+        photoImageView.image = apartment.imageReceived
         priceLabel.text = "$" + String(apartment.rent)
         titleLabel.text = apartment.title
     }

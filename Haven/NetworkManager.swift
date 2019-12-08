@@ -51,6 +51,9 @@ class NetworkManager {
                     if imgData.data.count > 0 {
                         didGetImage(Image.decodeImage(strBase64: imgData.data[0].image))
                     }
+                    else{
+                        didGetImage(UIImage(named: "apartment")!)
+                    }
                 }
                                    
             case .failure(let error):

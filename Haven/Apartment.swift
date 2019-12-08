@@ -21,7 +21,6 @@ class Apartment {
     var water: Bool
     var trash: Bool
     var heat: Bool
-    var posted: Bool
     
     init(image: String, title: String, description: String, rent: Int, address: String, is_draft: Bool, type: String, electricity: Bool, wifi: Bool, water: Bool, trash: Bool, heat: Bool) {
         self.image = image
@@ -36,7 +35,6 @@ class Apartment {
         self.water = water
         self.trash = trash
         self.heat = heat
-        self.posted = false
     }
     
     init(title: String, description: String, rent: Int, address: String, is_draft: Bool) {
@@ -53,7 +51,6 @@ class Apartment {
         self.water = false
         self.trash = false
         self.heat = false
-        self.posted = false
     }
     
 }
