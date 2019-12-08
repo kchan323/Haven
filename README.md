@@ -67,6 +67,8 @@ See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-
 
 &#10141; [Google Cloud](https://cloud.google.com/) - Server hosting
 
+&#10141; a link to the full API Spec can be found [here](https://paper.dropbox.com/doc/Haven-Backend-API-WIP-bpk7vUlUZVoWzgrtHKBlf)
+
 #### Authors:
 &#10141; [Yanlam Ko](https://github.com/YKo20010)
 
