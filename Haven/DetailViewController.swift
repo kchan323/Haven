@@ -50,13 +50,9 @@ class DetailViewController: UIViewController {
         titleLabel1.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel1.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel1)
-
-        if (apartment.image == "") {
-            apartmentImageView = UIImageView(image: UIImage(named: "apartment"))
-        }
-        else {
-            apartmentImageView = UIImageView(image: UIImage(named: apartment.image))
-        }
+        
+        apartmentImageView = UIImageView()
+        apartmentImageView.image = apartment.imageReceived
         apartmentImageView.contentMode = .scaleAspectFit
         apartmentImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(apartmentImageView)

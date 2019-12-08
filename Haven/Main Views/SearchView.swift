@@ -22,12 +22,16 @@ class SearchView: UIViewController {
     var Searches: [Apartment] = []
     var filteredSearches: [Apartment] = []
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.getAllListings()
-    }
+    var refreshControl: UIRefreshControl!
+    var getListingsInitial = true
+    var spinner = UIActivityIndicatorView()
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        self.getAllListings()
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         self.hideKeyboardWhenTappedAround()
@@ -58,7 +62,11 @@ class SearchView: UIViewController {
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchBar)
-
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(getAllListings), for: .valueChanged)
+        
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -66,9 +74,24 @@ class SearchView: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.refreshControl = refreshControl
         view.addSubview(tableView)
-            
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.startAnimating()
+        spinner.color = UIColor.black
+        view.addSubview(spinner)
+        view.bringSubviewToFront(spinner)
+        
+        
+        
+        
+        //        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
         getAllListings()
+        getListingsInitial = false
         setupConstraints()
     }
     
@@ -93,7 +116,7 @@ class SearchView: UIViewController {
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26),
             searchBar.heightAnchor.constraint(equalToConstant: 48)
         ])
-       
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
@@ -101,9 +124,27 @@ class SearchView: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            spinner.widthAnchor.constraint(equalToConstant: 50),
+            spinner.heightAnchor.constraint(equalToConstant: 50),
+        ])
+        
     }
     
-    func getAllListings () {
+    @objc func getAllListings () {
+        
+        if(getListingsInitial) {
+            self.tableView.isHidden = true
+            NetworkManager.getAllListings { apartments in
+                self.Searches = apartments
+                self.filteredSearches = apartments
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
+                self.spinner.stopAnimating()
+            }
+        }
         
         if let navController = self.navigationController {
             MBProgressHUD.showAdded(to: navController.view, animated: true)
@@ -116,7 +157,8 @@ class SearchView: UIViewController {
                 MBProgressHUD.hide(for: navController.view, animated: true)
             }
         }
-
+        refreshControl.endRefreshing()
+        
     }
 }
 
@@ -136,7 +178,7 @@ extension SearchView: UISearchBarDelegate {
     }
     
 }
-    
+
 extension SearchView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,7 +188,7 @@ extension SearchView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let search_cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchTableViewCell
         let Search = filteredSearches[indexPath.section]
@@ -176,7 +218,7 @@ extension SearchView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.layer.masksToBounds = true
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let Apartment = filteredSearches[indexPath.section]
         let viewController = DetailViewController(apartment: Apartment)
@@ -185,12 +227,12 @@ extension SearchView: UITableViewDelegate {
     
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */

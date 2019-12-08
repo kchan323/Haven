@@ -6,9 +6,11 @@
 //  Copyright © 2019 Katelin Chan. All rights reserved.
 //
 import Foundation
+import UIKit
 
 class Apartment {
     var image: String
+    var imageReceived: UIImage
     var title: String
     var description: String
     var rent: Int
@@ -23,6 +25,7 @@ class Apartment {
     
     init(image: String, title: String, description: String, rent: Int, address: String, is_draft: Bool, type: String, electricity: Bool, wifi: Bool, water: Bool, trash: Bool, heat: Bool) {
         self.image = image
+        self.imageReceived = UIImage()
         self.title = title
         self.description = description
         self.rent = rent
@@ -44,6 +47,7 @@ class Apartment {
         self.is_draft = is_draft
         
         self.image = ""
+        self.imageReceived = UIImage()
         self.electricity = false
         self.wifi = false
         self.water = false
