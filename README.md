@@ -76,10 +76,10 @@ See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-
 &#10141; [Google Cloud](https://cloud.google.com/) - Server hosting
 
 #### Authors:
-&#10141; [Yanlam Ko](https://github.com/YKo20010)
-
-&#10141; [Jack Thompson](https://github.com/jackthmp)
-
 &#10141; [Katelin Chan](https://github.com/kchan323)
 
 &#10141; [Anika Talwar](https://github.com/atalwar98)
+
+&#10141; [Yanlam Ko](https://github.com/YKo20010)
+
+&#10141; [Jack Thompson](https://github.com/jackthmp)
