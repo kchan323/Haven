@@ -30,9 +30,9 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     var aptLabel: UILabel!
     var houseLabel: UILabel!
     
-    var boxButton1: UIButton! //aptment
+    var boxButton1: UIButton!
     var pressed1: Bool
-    var boxButton2: UIButton! //house
+    var boxButton2: UIButton!
     var pressed2: Bool
     
     var rentLabel: UILabel!
@@ -58,7 +58,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-//        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -456,7 +455,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
         ])
 
         NSLayoutConstraint.activate([
-//            moreInfoLabel.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 10),
             moreInfoLabel.topAnchor.constraint(equalTo: perMonthLabel.bottomAnchor, constant: 10),
             moreInfoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             moreInfoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
@@ -598,8 +596,6 @@ class AddSubletViewController: UIViewController, UIImagePickerControllerDelegate
             print("No image found")
             return
         }
-
-        // print out the image size as a test
         selectedImageView.image = photo
     }
     

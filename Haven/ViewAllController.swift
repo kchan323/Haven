@@ -32,9 +32,7 @@ class ViewAllController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.isNavigationBarHidden = false
         view.backgroundColor = .white
-//        self.hideKeyboardWhenTappedAround()
         
         backButton = UIButton()
         backButton.setImage(UIImage (named: "caret_green"), for: .normal)
@@ -136,12 +134,3 @@ extension ViewAllController: UITableViewDelegate {
     
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

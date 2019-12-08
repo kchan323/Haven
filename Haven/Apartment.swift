@@ -16,7 +16,6 @@ class Apartment {
     var rent: Int
     var address: String
     var is_draft: Bool
-//    var type: String //apartment or house
     var electricity: Bool
     var wifi: Bool
     var water: Bool
@@ -31,7 +30,6 @@ class Apartment {
         self.rent = rent
         self.address = address
         self.is_draft = is_draft
-//        self.type = type //apartment or house
         self.electricity = electricity
         self.wifi = wifi
         self.water = water

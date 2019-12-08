@@ -82,7 +82,6 @@ class DetailViewController: UIViewController {
         let description = apartment.description
         let descriptionArray = description.components(separatedBy: ". ")
         descriptionLabel.text = descriptionArray.map { "\($0)" }.joined(separator:"\n")
-//        descriptionLabel.text = apartment.description
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = .black
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
@@ -216,15 +215,6 @@ class DetailViewController: UIViewController {
     @objc func backButtonPressed(sender: UIButton!) {
         navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

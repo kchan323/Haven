@@ -33,10 +33,6 @@ class Image {
         } else {
             return UIImage(named: "apartment") ?? UIImage()
         }
-        
-    
-
-
     }
 
 }

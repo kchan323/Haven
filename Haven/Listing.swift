@@ -8,19 +8,6 @@
 
 import Foundation
 
-//"success": True,
-//"data": {
-//  "id": 0,
-//  "user_id": 1,
-//  "title": "Spacious 2BR Apt. in the heart of Collegetown",
-//  "is_draft": False
-//  "description": "All new, fully furnished apartment.\n 5 minutes from the engineering quad.",
-//  "rent": 1050,
-//  "address": "717 E. Buffalo Street",
-//  "images": [ <IMAGES> ],
-//  "collections": [ <COLLECTIONS> ]
-//}
-
 struct ListingResponse: Codable {
     var success: Bool
     var data: Listing

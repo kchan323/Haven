@@ -15,7 +15,6 @@ class SearchTableViewCell: UITableViewCell {
     var priceLabel: UILabel!
     
     let padding: CGFloat = 16
-//    let labelHeight: CGFloat = 16
     let imageLength: CGFloat = 160
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

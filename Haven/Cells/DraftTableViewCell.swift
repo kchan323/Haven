@@ -15,8 +15,6 @@ class DraftTableViewCell: UITableViewCell {
     var caretImageView: UIImageView!
     
     let padding: CGFloat = 16
-//    let labelHeight: CGFloat = 16
-//    let caretImageLength: CGFloat = 30
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
