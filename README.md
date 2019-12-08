@@ -1,6 +1,12 @@
 # Haven
 Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack Thompson (Backend)* | Designed by: Yanlam Ko
 
+Living a semester abroad or graduating early? Planning to spend a summer in Ithaca and struggling to find a place to live? Using Haven will avoid the hassle of posting to or aimlessly searching on multiple platforms, making the process seamless for both parties! 
+
+Haven is a centralized platform to help students find and post their sublets. 
+
+The user enters their name on the login screen and presses continue, after which the user is guided to a view of all sublet listings. Here, one can search for any listing, view the sublet ad, title, location, and price, and when a listing is clicked, more detail is presented about the sublet with its description/details. Haven also provides a screen to view a collection of listings posted specific to a year and semester. Clicking on any one of the listings within the collection allows the user to see more detail about that listings and selecting to view all the listings lays them out  for that particular year/semester. The user can also see their profile of listings and drafts as well as post a listing by choosing to add a sublet, upon which they have to fill out a form with their apartment details. Their post is added under their listings  once they click the post button, but if they fill out information and aren’t quite ready to post, their listing is added as a draft on their profile. 
+
 See backend repo [here](https://github.com/YKo20010/haven).
 See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-WIP--Ap~_M5FNn_hdIArbDOHjuTmJAQ-bpk7vUlUZVoWzgrtHKBlf).
 
