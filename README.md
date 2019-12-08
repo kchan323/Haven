@@ -1,6 +1,9 @@
 # Haven
 Created by: *Katelin Chan (iOS), Anika Talwar (iOS), Yanlam Ko (Backend), Jack Thompson (Backend)* | Designed by: Yanlam Ko
 
+See backend repo [here](https://github.com/YKo20010/haven).
+See backend spec with [Dropbox](https://paper.dropbox.com/doc/Haven-Backend-API-WIP--Ap~_M5FNn_hdIArbDOHjuTmJAQ-bpk7vUlUZVoWzgrtHKBlf).
+
 **Login Screen**
 <p float="left">
   <img src="https://raw.githubusercontent.com/kchan323/Haven/master/Screenshots/Login1.png" width = '200'/>
