@@ -26,7 +26,7 @@ class Image {
     }
 
     static func decodeImage(strBase64: String) -> UIImage {
-//        print(strBase64)
+
         if let dataDecoded = NSData(base64Encoded: strBase64, options: .ignoreUnknownCharacters),
             let decodedimage = UIImage(data: dataDecoded as Data) {
             return decodedimage
