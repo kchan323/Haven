@@ -24,10 +24,7 @@ class NetworkManager {
                     var apartments : [Apartment] = []
                     for listing in listings.data {
                         if (listing.is_draft == is_draft) {
-                            let apartment = Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
-                            self.getImage(listingId: listing.id, { image in
-                                apartment.imageReceived = image
-                            })
+                            let apartment = Apartment(id: listing.id, title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
                             apartments.append(apartment)
                         }
                     }
@@ -71,11 +68,10 @@ class NetworkManager {
                 if let listings = try? jsonDecoder.decode(ListingsResponse.self, from: data) {
                     var apartments : [Apartment] = []
                     for listing in listings.data {
-                        let apartment = Apartment(title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
-                        self.getImage(listingId: listing.id, { image in
-                                apartment.imageReceived = image
-                        })
-                        apartments.append(apartment)
+                        if !listing.is_draft {
+                            let apartment = Apartment(id: listing.id, title: listing.title, description: listing.description, rent: listing.rent, address: listing.address, is_draft: listing.is_draft)
+                            apartments.append(apartment)
+                        }
                     }
                     didGetListings(apartments)
                 }

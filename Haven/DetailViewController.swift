@@ -52,9 +52,16 @@ class DetailViewController: UIViewController {
         view.addSubview(titleLabel1)
         
         apartmentImageView = UIImageView()
-        apartmentImageView.image = apartment.imageReceived
-        
-        
+        if let image = apartment.imageReceived {
+            apartmentImageView.image = image
+        } else {
+            apartmentImageView.image = UIImage(named: "placeholder")
+            NetworkManager.getImage(listingId: apartment.id) { [weak self] image in
+                guard let self = self else { return }
+                self.apartment.imageReceived = image
+                self.apartmentImageView.image = image
+            }
+        }
         
         apartmentImageView.contentMode = .scaleAspectFit
         apartmentImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +79,7 @@ class DetailViewController: UIViewController {
         titleLabel2.textColor = .black
         titleLabel2.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel2.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel2.numberOfLines = 0
         view.addSubview(titleLabel2)
         
         apartmentLabel = UILabel()
@@ -139,7 +147,8 @@ class DetailViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            titleLabel1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            titleLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             titleLabel1.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             titleLabel1.heightAnchor.constraint(equalToConstant: 20)
         ])
@@ -162,7 +171,7 @@ class DetailViewController: UIViewController {
             titleLabel2.topAnchor.constraint(equalTo: addressLabel.bottomAnchor),
             titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            titleLabel2.heightAnchor.constraint(equalToConstant: 36)
+//            titleLabel2.heightAnchor.constraint(equalToConstant: 36)
         ])
         
         NSLayoutConstraint.activate([

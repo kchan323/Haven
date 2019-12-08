@@ -92,7 +92,17 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     func configure(for search: Apartment) {
-        aptImageView.image = search.imageReceived
+        if let image = search.imageReceived {
+            aptImageView.image = image
+        } else {
+            aptImageView.image = UIImage(named:"placeholder")
+            NetworkManager.getImage(listingId: search.id) { [weak self] image in
+                guard let self = self else { return }
+                search.imageReceived = image
+                self.aptImageView.image = image
+            }
+        }
+
         addressLabel.text = search.address
         titleLabel.text = search.title
         priceLabel.text = "$" + String(search.rent)
