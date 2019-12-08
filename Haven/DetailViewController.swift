@@ -25,6 +25,9 @@ class DetailViewController: UIViewController {
     
     var apartment: Apartment
     
+    var centerY: NSLayoutConstraint!
+    var width: NSLayoutConstraint!
+    
     init(apartment: Apartment) {
         self.apartment = apartment
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +52,9 @@ class DetailViewController: UIViewController {
         titleLabel1.textColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0)
         titleLabel1.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel1.translatesAutoresizingMaskIntoConstraints = false
+        centerY = titleLabel1.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)
+        width = titleLabel1.widthAnchor.constraint(lessThanOrEqualToConstant: view.frame.width - 150)
+        centerY.priority = UILayoutPriority(999)
         view.addSubview(titleLabel1)
         
         apartmentImageView = UIImageView()
