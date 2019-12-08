@@ -51,10 +51,8 @@ class DetailViewController: UIViewController {
         titleLabel1.text = apartment.title.uppercased()
         titleLabel1.textColor = UIColor(red: 84.0 / 255.0, green: 0.0, blue: 218.0 / 255.0, alpha: 1.0)
         titleLabel1.font = UIFont.boldSystemFont(ofSize: 14)
+        titleLabel1.textAlignment = .center
         titleLabel1.translatesAutoresizingMaskIntoConstraints = false
-        centerY = titleLabel1.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)
-        width = titleLabel1.widthAnchor.constraint(lessThanOrEqualToConstant: view.frame.width - 150)
-        centerY.priority = UILayoutPriority(999)
         view.addSubview(titleLabel1)
         
         apartmentImageView = UIImageView()
@@ -176,8 +174,7 @@ class DetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel2.topAnchor.constraint(equalTo: addressLabel.bottomAnchor),
             titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-//            titleLabel2.heightAnchor.constraint(equalToConstant: 36)
+            titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
         
         NSLayoutConstraint.activate([
