@@ -10,7 +10,7 @@ import UIKit
 
 class SaveView: UIViewController {
 
-    var addButton: UIButton!
+//    var addButton: UIButton!
     
     var titleLabel: UILabel!
     var headerLabel1: UILabel!
@@ -39,7 +39,7 @@ class SaveView: UIViewController {
     
     var viewAllButton2: UIButton!
     var lineView3: UIView!
-    var addCollectionButton: UIButton!
+//    var addCollectionButton: UIButton!
     
     let apartmentCellReuseIdentifier = "apartmentCellReuseIdentifier"
     let padding: CGFloat = 12
@@ -52,13 +52,13 @@ class SaveView: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         
-        addButton = UIButton()
-        let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
-        addButton.setImage(image, for: .normal)
-        addButton.tintColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
-        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addButton)
+//        addButton = UIButton()
+//        let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+//        addButton.setImage(image, for: .normal)
+//        addButton.tintColor = UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
+//        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+//        addButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(addButton)
         
         titleLabel = UILabel()
         titleLabel.text = "My Saves."
@@ -158,13 +158,13 @@ class SaveView: UIViewController {
         lineView3.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView3)
         
-        addCollectionButton = UIButton()
-        addCollectionButton.setTitle("Add a Collection", for: .normal)
-        addCollectionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-        addCollectionButton.setTitleColor(UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0), for: .normal)
-        addCollectionButton.addTarget(self, action: #selector(addCollectionButtonPressed), for: .touchUpInside)
-        addCollectionButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addCollectionButton)
+//        addCollectionButton = UIButton()
+//        addCollectionButton.setTitle("Add a Collection", for: .normal)
+//        addCollectionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+//        addCollectionButton.setTitleColor(UIColor(red: 0.0, green: 150.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0), for: .normal)
+//        addCollectionButton.addTarget(self, action: #selector(addCollectionButtonPressed), for: .touchUpInside)
+//        addCollectionButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(addCollectionButton)
         
         collection1 = Collection(title: "Spring 2020", apartments: apartments1)
         collection2 = Collection(title: "Fall 2020", apartments: apartments2)
@@ -173,12 +173,12 @@ class SaveView: UIViewController {
     }
         
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
-            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            addButton.widthAnchor.constraint(equalToConstant: 22),
-            addButton.heightAnchor.constraint(equalToConstant: 22)
-        ])
+//        NSLayoutConstraint.activate([
+//            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 3),
+//            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+//            addButton.widthAnchor.constraint(equalToConstant: 22),
+//            addButton.heightAnchor.constraint(equalToConstant: 22)
+//        ])
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
@@ -250,17 +250,16 @@ class SaveView: UIViewController {
             lineView3.heightAnchor.constraint(equalToConstant: 2)
         ])
         
-        NSLayoutConstraint.activate([
-            addCollectionButton.topAnchor.constraint(equalTo: lineView3.bottomAnchor, constant: 13),
-            addCollectionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addCollectionButton.heightAnchor.constraint(equalToConstant: 33)
-        ])
+//        NSLayoutConstraint.activate([
+//            addCollectionButton.topAnchor.constraint(equalTo: lineView3.bottomAnchor, constant: 13),
+//            addCollectionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            addCollectionButton.heightAnchor.constraint(equalToConstant: 33)
+//        ])
     }
     
-    @objc func addButtonPressed(sender: UIButton!) {
-        print("pressed add (+) button")
-//        navigationController?.popViewController(animated: true)
-    }
+//    @objc func addButtonPressed(sender: UIButton!) {
+//        print("pressed add (+) button")
+//    }
     
     @objc func viewAllButtonPressed1(sender: UIButton!) {
         print("pressed view all button 1")
@@ -276,9 +275,9 @@ class SaveView: UIViewController {
         navigationController!.pushViewController(viewController, animated: true)
     }
     
-    @objc func addCollectionButtonPressed(sender: UIButton!) {
-        print("pressed add collection button")
-    }
+//    @objc func addCollectionButtonPressed(sender: UIButton!) {
+//        print("pressed add collection button")
+//    }
 }
 
 extension SaveView: UICollectionViewDataSource {
@@ -336,4 +335,3 @@ extension SaveView: UICollectionViewDelegate {
         }
     }
 }
-
