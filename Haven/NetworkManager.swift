@@ -139,7 +139,7 @@ class NetworkManager {
             switch response.result {
             case .success(let data):
                 let jsonDecoder = JSONDecoder()
-                if let imgData = try? jsonDecoder.decode(ImageStruct.self, from: data) {
+                if let _ = try? jsonDecoder.decode(ImageStruct.self, from: data) {
                 }
             case .failure(let error):
                 print(error.localizedDescription)

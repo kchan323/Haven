@@ -27,6 +27,10 @@ class ProfileView: UIViewController {
     
     var addButton: UIButton!
     var lineView3: UIView!
+    
+    var spinner = UIActivityIndicatorView()
+    var getDraftsInitial = true
+    var getListingsInitial = true
 
     override func viewDidAppear(_ animated: Bool) {
         self.getMyDrafts()
@@ -113,11 +117,21 @@ class ProfileView: UIViewController {
         lineView3.backgroundColor = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
         lineView3.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(lineView3)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.startAnimating()
+        spinner.color = UIColor.black
+        view.addSubview(spinner)
+        view.bringSubviewToFront(spinner)
                 
         setupConstraints()
         
         getMyDrafts()
         getMyListings()
+        getDraftsInitial = false
+        getListingsInitial = false
+
     }
     
     func setupConstraints() {
@@ -183,6 +197,13 @@ class ProfileView: UIViewController {
             lineView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             lineView3.heightAnchor.constraint(equalToConstant: 2)
         ])
+        
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            spinner.widthAnchor.constraint(equalToConstant: 50),
+            spinner.heightAnchor.constraint(equalToConstant: 50),
+        ])
     }
     
     @objc func addButtonPressed(sender: UIButton!) {
@@ -192,6 +213,16 @@ class ProfileView: UIViewController {
     }
     
     func getMyDrafts () {
+        if(getDraftsInitial) {
+            self.tableView1.isHidden = true
+            NetworkManager.getMyListings(is_draft: true) { (drafts) in
+                self.drafts = drafts
+                self.tableView1.reloadData()
+                self.tableView1.isHidden = false
+                self.spinner.stopAnimating()
+            }
+        }
+
         NetworkManager.getMyListings(is_draft: true) { (drafts) in
             self.drafts = drafts
             self.tableView1.reloadData()
@@ -199,6 +230,16 @@ class ProfileView: UIViewController {
     }
     
     func getMyListings () {
+        if(getListingsInitial) {
+            self.tableView2.isHidden = true
+            NetworkManager.getMyListings(is_draft: true) { (drafts) in
+                self.drafts = drafts
+                self.tableView2.reloadData()
+                self.tableView2.isHidden = false
+                self.spinner.stopAnimating()
+            }
+        }
+        
         NetworkManager.getMyListings(is_draft: false) { (listings) in
             self.listings = listings
             self.tableView2.reloadData()
@@ -253,4 +294,3 @@ extension ProfileView: UITableViewDelegate {
             
     }
 }
-

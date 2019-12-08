@@ -81,12 +81,6 @@ class SearchView: UIViewController {
         view.addSubview(spinner)
         view.bringSubviewToFront(spinner)
         
-        
-        
-        
-        //        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
         getAllListings()
         getListingsInitial = false
         setupConstraints()
